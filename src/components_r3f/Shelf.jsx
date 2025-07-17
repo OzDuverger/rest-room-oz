@@ -1,7 +1,12 @@
 import { useTexture, useGLTF } from "@react-three/drei"
+import { useContext } from "react"
+import { AppSetterContext } from "../context/AppContext"
 
 export default function Shelf()
 {
+    // Get app context setter
+    const setApp = useContext(AppSetterContext)
+
     // Load model
     const shelf = useGLTF("./models/shelf.glb")
     
@@ -13,12 +18,13 @@ export default function Shelf()
     const eventOnPointerEnterHandler = (event) => {
     
         document.body.style.cursor = "pointer"
-        console.log("Shelf")
+        setApp({ hover: "Shelf" })
     }
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
+        setApp({ hover: null })
     }
     
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }

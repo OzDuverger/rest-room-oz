@@ -1,7 +1,12 @@
 import { useTexture, useGLTF } from "@react-three/drei"
+import { useContext } from "react"
+import { AppSetterContext } from "../context/AppContext"
 
 export default function Games()
 {
+    // Get app context setter
+    const setApp = useContext(AppSetterContext)
+
     // Load model
     const games = useGLTF("./models/games.glb")
 
@@ -13,12 +18,13 @@ export default function Games()
     const eventOnPointerEnterHandler = (event) => {
 
         document.body.style.cursor = "pointer"
-        console.log("Games")
+        setApp({ hover: "Games" })
     }
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
+        setApp({ hover: null })
     }
 
     return <group   onPointerEnter={ eventOnPointerEnterHandler }

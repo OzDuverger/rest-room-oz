@@ -1,7 +1,12 @@
 import { useTexture, useGLTF } from "@react-three/drei"
+import { useContext } from "react"
+import { AppSetterContext } from "../context/AppContext"
 
 export default function Bench()
 {
+    // Get app context setter
+    const setApp = useContext(AppSetterContext)
+
     // Load model
     const bench = useGLTF("./models/bench.glb")
     
@@ -13,12 +18,13 @@ export default function Bench()
     const eventOnPointerEnterHandler = (event) => {
 
         document.body.style.cursor = "pointer"
-        console.log("Bench")
+        setApp({ hover: "Bench" })
     }
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
+        setApp({ hover: null })
     }
 
     return <group   onPointerEnter={ eventOnPointerEnterHandler }

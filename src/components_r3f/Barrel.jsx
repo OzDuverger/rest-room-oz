@@ -1,7 +1,12 @@
 import { useTexture, useGLTF } from "@react-three/drei"
+import { useContext } from "react"
+import { AppSetterContext } from "../context/AppContext"
 
 export default function Barrel()
 {
+    // Get app context setter
+    const setApp = useContext(AppSetterContext)
+
     // Load model
     const barrel = useGLTF("./models/barrel.glb")
 
@@ -13,13 +18,14 @@ export default function Barrel()
     const eventOnPointerEnterHandler = (event) => {
 
         document.body.style.cursor = "pointer"
-        console.log("Barrel")
+        setApp({ hover: "Barrel" })
     }
     
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
+        setApp({ hover: null })
     }
 
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }

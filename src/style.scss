@@ -1,0 +1,122 @@
+// Colors
+$white: #F3F3F3;
+$orange: #FF7A00;
+$red: #E03616;
+$green: #45C4A2;
+
+// Mixins
+@mixin flex($justify: center, $align: center, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+html {
+    font-size: 15px;
+    color: $white;
+    // DEBUG !!!
+    background-color: ivory;
+    // DEBUG !!!
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        margin: 0;
+        @include flex(space-between, unset, column);
+
+        .container {
+            margin: 0 auto;
+            max-width: 1100px;
+            width: 100%;
+        }
+        button {
+            font-family: inherit;
+            background: unset;
+            color: inherit;
+            border: none;
+        }
+    
+        input {
+            outline: none;
+            border: none;
+            font-family: "Geomanist", sans-serif;
+        }
+    
+        select {
+            appearance: none;
+            border: 0;
+            outline: 0;
+            font: inherit;
+        }
+
+        figure {
+            margin: 0;
+        }
+    
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    
+        img {
+            object-fit: contain;
+        }
+
+        .composition {
+            position: relative;
+        }
+
+        #root {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: ivory;
+
+            #chat {
+                position: fixed;
+                z-index: 42;
+                left: 0;
+                bottom: 0;
+                margin: 15px auto;
+                width: 100%;
+                // DEBUG !!!
+                // background-color: $green;
+                // DEBUG !!!
+
+                .chat {
+                    @include flex();
+                    width: 100%;
+                    border-radius: 20px;
+                    margin: 5px auto;
+                    padding: 15px 50px;
+                    height: 15vh;
+                    overflow: auto;
+                    background-color: rgba(black, 0.5);
+                    // DEBUG !!!
+                    border: 5px solid rgba($orange, 0.75);
+                    border-style: solid double;
+                    box-shadow: rgba($orange, 0.25) 0px 30px 60px -12px inset, rgba($orange, 0.3) 0px 18px 36px -18px inset;
+                    // DEBUG !!!
+                }
+            }
+
+            .htmlScreen {
+                iframe {
+                    width: 1054px;
+                    height: 641px;
+                    border: none;
+                    border-radius: 20px;
+                    background: black;
+                }
+            }
+        }
+
+    }
+}
