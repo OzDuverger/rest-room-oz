@@ -1,6 +1,10 @@
 import { Html, useTexture, useGLTF } from "@react-three/drei"
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import { AppSetterContext } from "../context/AppContext"
+import coffeeSmokeVertexShader from "../shaders/smoke/vertex.glsl"
+import coffeeSmokeFragmentShader from "../shaders/smoke/fragment.glsl"
+import * as THREE from "three"
+import { useFrame } from "@react-three/fiber"
 
 export default function Table()
 {
@@ -11,8 +15,19 @@ export default function Table()
     const table = useGLTF("./models/table.glb")
 
     // Load texture
-    const tableBakedTexture = useTexture('./textures/table-baked.jpg')
+    const tableBakedTexture = useTexture("./textures/table-baked.jpg")
     tableBakedTexture.flipY = false
+
+    // Smoke Material
+    const smokeMaterial = useRef()
+    useFrame((state, delta) => {
+        smokeMaterial.current.uniforms.uTime.value += delta
+    })
+
+    // Perlin noise
+    const perlinTexture = useTexture("./perlin.png")
+    perlinTexture.wrapS = THREE.RepeatWrapping
+    perlinTexture.wrapT = THREE.RepeatWrapping
 
     // Mouse events handlers
     const eventOnPointerEnterHandler = (event) => {
@@ -41,6 +56,25 @@ export default function Table()
                         rotation={ table.nodes.mug.rotation }
                 >
                     <meshBasicMaterial map={ tableBakedTexture } />
+                </mesh>
+                {/* Smoke */}
+                <mesh   position={[1.37, -1.88, 1.35]}
+                        scale={[0.15, 0.75, 1.5]}
+                >
+                    <planeGeometry  args={[1, 1, 16, 64]}
+                                    translate={[0, 0.5, 0]}
+                    />
+                    <shaderMaterial ref={ smokeMaterial }
+                                    vertexShader={ coffeeSmokeVertexShader }
+                                    fragmentShader={ coffeeSmokeFragmentShader }
+                                    uniforms={{
+                                        uTime: { value: 0 },
+                                        uPerlinTexture: new THREE.Uniform(perlinTexture)
+                                    }}
+                                    transparent
+                                    side={ THREE.DoubleSide }
+                                    depthWrite={ false }
+                    />
                 </mesh>
                 <mesh   geometry={ table.nodes.laptop.geometry }
                         position={ table.nodes.laptop.position }

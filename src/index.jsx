@@ -21,6 +21,6 @@ root.render(
             <color args={ [ "#030202" ] } attach="background" />
             <Experience />
         </Canvas>
-        <Chat />
+        {/* <Chat /> */}
     </AppProvider>
 )
