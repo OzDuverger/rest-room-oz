@@ -78,6 +78,10 @@ html {
             width: 100%;
             height: 100%;
             background: ivory;
+        
+            .r3f {
+                touch-action: none;
+            }
 
             #chat {
                 position: fixed;
@@ -104,6 +108,40 @@ html {
                     border-style: solid double;
                     box-shadow: rgba($orange, 0.25) 0px 30px 60px -12px inset, rgba($orange, 0.3) 0px 18px 36px -18px inset;
                     // DEBUG !!!
+                }
+            }
+
+            #presentation {
+                // DEBUG !!!
+                background-color: #030202;
+                // DEBUG !!!
+                width: 100%;
+                height: 100vh;
+                z-index: 66;
+
+                .chat {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    margin: 15px auto;
+                    width: 100%;
+                    border-radius: 20px;
+                    padding: 15px 50px;
+                    height: 15vh;
+                    @include flex();
+                    // DEBUG !!!
+                    border: 5px solid rgba($orange, 0.75);
+                    border-style: solid double;
+                    box-shadow: rgba($orange, 0.25) 0px 30px 60px -12px inset, rgba($orange, 0.3) 0px 18px 36px -18px inset;
+                    // DEBUG !!!
+                }
+
+                .next {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    font-size: 0.75rem;
+                    padding: 4vh 2vw;
                 }
             }
 

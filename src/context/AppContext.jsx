@@ -7,7 +7,8 @@ export function AppProvider({ children })
 {
     const [app, setApp] = useState({
         place: "all",
-        hover: null
+        hover: null,
+        loading: true
     })
 
     return  <AppContext.Provider value={ app }>
