@@ -1,4 +1,4 @@
-import { Center, PresentationControls, Html } from "@react-three/drei"
+import { Center, PresentationControls, Html, OrbitControls } from "@react-three/drei"
 import { Suspense, useState, useContext, useEffect } from "react"
 
 // Context
@@ -55,6 +55,7 @@ export default function Experience()
                 {/* <Suspense
                     fallback={ <Riri /> }
                 > */}
+                {/* <OrbitControls makeDefault /> */}
                     <PresentationControls   global
                                             polar={ [-0.15, 0.25] }
                                             azimuth={ [-0.25, 0.25] }

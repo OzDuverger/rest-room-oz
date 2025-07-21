@@ -1,15 +1,28 @@
-import { Html, useTexture, useGLTF } from "@react-three/drei"
+import { Html, useTexture, useGLTF, OrbitControls } from "@react-three/drei"
 import { useContext, useRef } from "react"
+import { useFrame, useThree } from "@react-three/fiber"
+import * as THREE from "three"
+import { gsap } from "gsap"
+
+// Context
 import { AppSetterContext } from "../context/AppContext"
+
+// Shaders
 import coffeeSmokeVertexShader from "../shaders/smoke/vertex.glsl"
 import coffeeSmokeFragmentShader from "../shaders/smoke/fragment.glsl"
-import * as THREE from "three"
-import { useFrame } from "@react-three/fiber"
 
 export default function Table()
 {
     // Get app context setter
     const setApp = useContext(AppSetterContext)
+
+    // Camera
+    const { gl, camera } = useThree()
+    const initialPos = {
+        x: camera.position.x,
+        y: camera.position.y,
+        z: camera.position.z
+    }
 
     // Load model
     const table = useGLTF("./models/table.glb")
@@ -42,8 +55,22 @@ export default function Table()
         setApp({ hover: null })
     }
 
+    const eventOnClick = (event) => {
+        console.log("Click")
+        console.log(camera.position)
+        console.log("camera.rotation")
+        console.log(camera.rotation)
+        // gsap.to(camera.position, {
+        //     x: -2.39,
+        //     y: -1.82,
+        //     z: 2.19,
+        //     duration: 2
+        // })
+    }
+
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }
                     onPointerLeave={ eventOnPointerLeaveHandler }
+                    onClick={ eventOnClick }
             >
                 <mesh   geometry={ table.nodes.Table.geometry }
                         position={ table.nodes.Table.position }
