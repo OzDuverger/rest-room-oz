@@ -83,6 +83,17 @@ html {
                 touch-action: none;
             }
 
+            #riri {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: $orange;
+                box-shadow: #ad5502;
+            }
+
             #chat {
                 position: fixed;
                 z-index: 42;

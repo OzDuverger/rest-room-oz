@@ -1,15 +1,32 @@
-import { useContext } from "react"
-import { AppSetterContext } from "../context/AppContext"
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
 
-export default function Riri()
+export default function Riri(
+    {
+        canMove,
+        nextChat
+    }
+)
 {
-    // Get app context setter
-    const setApp = useContext(AppSetterContext)
+    const followerRef = useRef(null)
 
-    return  <>
-    {/* DEBUG !!! */}
-                <mesh position-y={ 0.5 } scale={ [ 2, 3, 2 ] }><boxGeometry args={ [ 1, 1, 1, 2, 2, 2 ] } /><meshBasicMaterial wireframe color="red" /></mesh>
-    {/* DEBUG !!! */}
-                riri
-            </>
+    const moveFollower = (e) => {
+        if (canMove === true) {
+            gsap.to(followerRef.current, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.6,
+                ease: "power3"
+            })
+        }
+    }
+
+    useEffect(() => {
+
+        document.addEventListener("mousemove", moveFollower)
+        document.addEventListener("click", nextChat)
+    }, [canMove])
+
+    return  <div id="riri" ref={ followerRef } >
+            </div>
 }

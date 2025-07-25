@@ -37,31 +37,55 @@ export default function Experience()
     const max = data.length - 1
 
     const [chat, setChat] = useState(data[i].text)
+    const [canMove, setCanMove] = useState(false)
 
     const nextChat = (e) => {
 
-        if (e.key === "Enter") {
-            if (i < max ) {
-                i++
-                setChat(data[i].text)
-            } else {
-                setLoading(false)
+        if (i < max) {
+            if (e.type === "keydown" && e.key === "Enter") {
+                if (i !== 8) {
+                    i++
+                    setChat(data[i].text)
+                }
+            } else if (e.type === "click" && e.target.id === "riri") {
+                if (i === 8) {
+                    i++
+                    setCanMove(true)
+                    setChat(data[i].text)
+                }
             }
+        } else {
+            setLoading(false)
         }
     }
 
+
     return  <>
+                <Html fullscreen>
+                    <Riri canMove={ canMove } nextChat={ nextChat } />
+                    { loading ? <Presentation chat={ chat } nextChat={ nextChat } /> : <Chat />}
+                </Html>
     {/* TO-DO : Create loader if presentation is too fast */}
                 {/* <Suspense
                     fallback={ <Riri /> }
                 > */}
-                {/* <OrbitControls makeDefault /> */}
-                    <PresentationControls   global
+                <OrbitControls makeDefault />
+                    {/* <PresentationControls   global
                                             polar={ [-0.15, 0.25] }
                                             azimuth={ [-0.25, 0.25] }
                                             snap
-                    >
-                        <Center>
+                    > */}
+                    {/* { loading ? <></> : (<Center>
+                                            <Room />
+                                            <Games />
+                                            <Barrel />
+                                            <Table />
+                                            <Chimney />
+                                            <Bench />
+                                            <Shelf />
+                                        </Center>)
+                    } */}
+                        {/* <Center>
                             <Room />
                             <Games />
                             <Barrel />
@@ -69,11 +93,8 @@ export default function Experience()
                             <Chimney />
                             <Bench />
                             <Shelf />
-                        </Center>
-                    </PresentationControls>
+                        </Center> */}
+                    {/* </PresentationControls> */}
                 {/* </Suspense> */}
-                <Html fullscreen>
-                    { loading ? <Presentation chat={ chat } nextChat={ nextChat } /> : <Chat />}
-                </Html>
             </>
 }
