@@ -5,8 +5,12 @@ import { Canvas } from "@react-three/fiber"
 // Context
 import { AppProvider } from "./context/AppContext"
 
+// React Components
+import HtmlExperience from "./components_react/HtmlExperience"
+
 // R3F Components
 import Experience from "./components_r3f/Experience"
+
 
 const root = ReactDOM.createRoot(document.querySelector("#root"))
 
@@ -25,5 +29,6 @@ root.render(
             <color args={ [ "#030202" ] } attach="background" />
             <Experience />
         </Canvas>
+        <HtmlExperience />
     </AppProvider>
 )

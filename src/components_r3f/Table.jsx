@@ -1,11 +1,12 @@
 import { Html, useTexture, useGLTF, OrbitControls } from "@react-three/drei"
-import { useContext, useRef } from "react"
+import { useContext, useRef, useEffect, useState } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
 import { gsap } from "gsap"
 
 // Context
 import { AppSetterContext } from "../context/AppContext"
+import { AppContext } from "../context/AppContext"
 
 // Shaders
 import coffeeSmokeVertexShader from "../shaders/smoke/vertex.glsl"
@@ -13,6 +14,14 @@ import coffeeSmokeFragmentShader from "../shaders/smoke/fragment.glsl"
 
 export default function Table()
 {
+    // Loading
+    const [loading, setLoading] = useState(true)
+    const app = useContext(AppContext)
+
+    useEffect(() => {
+        setLoading(app.loading)
+    }, [app.loading])
+
     // Get app context setter
     const setApp = useContext(AppSetterContext)
 
@@ -56,16 +65,12 @@ export default function Table()
     }
 
     const eventOnClick = (event) => {
-        console.log("Click")
-        console.log(camera.position)
-        console.log("camera.rotation")
-        console.log(camera.rotation)
-        // gsap.to(camera.position, {
-        //     x: -2.39,
-        //     y: -1.82,
-        //     z: 2.19,
-        //     duration: 2
-        // })
+        gsap.to(camera.position, {
+            x: 2.45,
+            y: -1.95,
+            z: 2.25,
+            duration: 2
+        })
     }
 
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }
@@ -117,14 +122,13 @@ export default function Table()
                     {/* Iframe */}
                     <Html   transform
                             zIndexRange={[1, 0]}
-                            occlude
                             wrapperClass="htmlScreen"
                             distanceFactor={ 1 }
                             rotation-x={-1.57}
                             scale={ 0.232}
                             position-x={0.01}
                     >
-                        <iframe src="https://oz-duverger-dev.netlify.app/" />
+                        { loading ? null : (<iframe src="https://oz-duverger-dev.netlify.app/" />) }
                     </Html>
                 </mesh>
             </group>

@@ -3,6 +3,7 @@ $white: #F3F3F3;
 $orange: #FF7A00;
 $red: #E03616;
 $green: #45C4A2;
+$black: #030202;
 
 // Mixins
 @mixin flex($justify: center, $align: center, $direction: row) {
@@ -83,6 +84,15 @@ html {
                 touch-action: none;
             }
 
+            .black-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: $black;
+            }
+
             #riri {
                 position: absolute;
                 top: 0;
@@ -124,7 +134,7 @@ html {
 
             #presentation {
                 // DEBUG !!!
-                background-color: #030202;
+                background-color: $black;
                 // DEBUG !!!
                 width: 100%;
                 height: 100vh;
