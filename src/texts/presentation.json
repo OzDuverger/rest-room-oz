@@ -1,38 +1,50 @@
 [
     {
-        "text" : "Hey !"
+        "text" : "Hey !",
+        "time" : 1
     },
     {
-        "text" : "Hey ! You !"
+        "text" : "Hey ! You !",
+        "time" : 1
     },
     {
-        "text" : "Hey ! Hey !"
+        "text" : "Hey ! Hey !",
+        "time" : 1
     },
     {
-        "text" : "Listen !"
+        "text" : "Listen !",
+        "time" : 1
     },
     {
-        "text" : "I'm Riri, a friend of Oz and you're about to enter their rest and presentation room."
+        "text" : "I'm Riri, a friend of Oz and you're about to enter their rest and presentation room.",
+        "time" : 3
     },
     {
-        "text" : "I know, you're not used to speek with a fairy but you know, that's life !"
+        "text" : "I know, you're not used to speek with a fairy but you know, that's life !",
+        "time" : 3
     },
     {
-        "text" : "we are not going to make a big deal out of it"
+        "text" : "we are not going to make a big deal out of it",
+        "time" : 2
     },
     {
-        "text" : "..."
+        "text" : "...",
+        "time" : 1
     },
     {
-        "text" : "Try to catch me !"
+        "text" : "Try to catch me !",
+        "time" : 2
     },
     {
-        "text" : "Yeah ! You did it !"
+        "text" : "Yeah ! You did it !",
+        "time" : 1
     },
     {
-        "text" : "You just have to hover with me different element in the room to find out more !"
+        "text" : "You just have to hover with me different element in the room to find out more !",
+        "time" : 3
     },
     {
-        "text" : "Now, let's go to the room ! WOUHOU !"
+        "text" : "Now, let's go to the room ! WOUHOU !",
+        "time" : 2
     }
 ]

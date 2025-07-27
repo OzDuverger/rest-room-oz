@@ -95,8 +95,8 @@ html {
 
             #riri {
                 position: absolute;
-                top: 0;
-                left: 0;
+                top: 50vh;
+                left: 50vw;
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
@@ -111,9 +111,6 @@ html {
                 bottom: 0;
                 margin: 15px auto;
                 width: 100%;
-                // DEBUG !!!
-                // background-color: $green;
-                // DEBUG !!!
 
                 .chat {
                     @include flex();
@@ -124,11 +121,9 @@ html {
                     height: 15vh;
                     overflow: auto;
                     background-color: rgba(black, 0.5);
-                    // DEBUG !!!
                     border: 5px solid rgba($orange, 0.75);
                     border-style: solid double;
                     box-shadow: rgba($orange, 0.25) 0px 30px 60px -12px inset, rgba($orange, 0.3) 0px 18px 36px -18px inset;
-                    // DEBUG !!!
                 }
             }
 

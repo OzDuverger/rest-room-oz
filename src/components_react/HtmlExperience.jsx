@@ -13,6 +13,14 @@ import data from "../texts/presentation.json"
 
 export default function HtmlExperience()
 {
+    // Ambient Sound part
+    const AmbientAudio = new Audio("./sounds/chill-lofi-ambient.mp3")
+    useEffect(() => {
+        AmbientAudio.loop = true
+        AmbientAudio.volume = 0.25
+        AmbientAudio.play()
+    }, [])
+
     // Loading
     const [loading, setLoading] = useState(true)
     const app = useContext(AppContext)
@@ -27,6 +35,7 @@ export default function HtmlExperience()
     const max = data.length - 1
 
     const [chat, setChat] = useState(data[i].text)
+    const [timeChat, setTimeChat] = useState(data[i].time)
     const [canMove, setCanMove] = useState(false)
 
     const nextChat = (e) => {
@@ -36,12 +45,14 @@ export default function HtmlExperience()
                 if (i !== 8) {
                     i++
                     setChat(data[i].text)
+                    setTimeChat(data[i].time)
                 }
             } else if (e.type === "click" && e.target.id === "riri") {
                 if (i === 8) {
                     i++
                     setCanMove(true)
                     setChat(data[i].text)
+                    setTimeChat(data[i].time)
                 }
             }
         } else {
@@ -52,7 +63,7 @@ export default function HtmlExperience()
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <Riri canMove={ canMove } nextChat={ nextChat } />
-                    { loading ? (<Presentation chat={ chat } nextChat={ nextChat } />) : null }
+                    { loading ? (<Presentation chat={ chat } timeChat={ timeChat } nextChat={ nextChat } />) : null }
                     <Chat />
                 </div>
             </>
