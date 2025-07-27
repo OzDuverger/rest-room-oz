@@ -9,6 +9,7 @@ import Table from "./Table"
 import Chimney from "./Chimney"
 import Bench from "./Bench"
 import Shelf from "./Shelf"
+import Return from "./Return"
 
 export default function Experience()
 {
@@ -17,11 +18,12 @@ export default function Experience()
                     fallback={ <Riri /> }
                 > */}
                 {/* <OrbitControls makeDefault /> */}
-                    <PresentationControls   global
+                    {/* <PresentationControls   global
                                             polar={ [-0.15, 0.25] }
                                             azimuth={ [-0.25, 0.25] }
                                             snap
-                    >
+                    > */}
+                        <Return />
                         <Center>
                             <Room />
                             <Games />
@@ -31,7 +33,7 @@ export default function Experience()
                             <Bench />
                             <Shelf />
                         </Center>
-                    </PresentationControls>
+                    {/* </PresentationControls> */}
                 {/* </Suspense> */}
             </>
 }

@@ -11,11 +11,6 @@ export default function Barrel()
 
     // Camera
     const { gl, camera } = useThree()
-    const initialPos = {
-        x: camera.position.x,
-        y: camera.position.y,
-        z: camera.position.z
-    }
 
     // Load model
     const barrel = useGLTF("./models/barrel.glb")

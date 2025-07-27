@@ -27,11 +27,6 @@ export default function Table()
 
     // Camera
     const { gl, camera } = useThree()
-    const initialPos = {
-        x: camera.position.x,
-        y: camera.position.y,
-        z: camera.position.z
-    }
 
     // Load model
     const table = useGLTF("./models/table.glb")

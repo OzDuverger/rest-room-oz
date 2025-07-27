@@ -1,11 +1,16 @@
 import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
 import { AppSetterContext } from "../context/AppContext"
+import { useThree } from "@react-three/fiber"
+import { gsap } from "gsap"
 
 export default function Shelf()
 {
     // Get app context setter
     const setApp = useContext(AppSetterContext)
+
+    // Camera
+    const { gl, camera } = useThree()
 
     // Load model
     const shelf = useGLTF("./models/shelf.glb")
@@ -27,8 +32,24 @@ export default function Shelf()
         setApp({ hover: null })
     }
     
+    const eventOnClick = (event) => {
+        const tl = gsap.timeline()
+        tl.to(camera.position, {
+            x: 1.75,
+            y: -1.05,
+            z: 0,
+            duration: 2
+        }, 0)
+        tl.to(camera.rotation, {
+            x: -0.05,
+            y: 1.5,
+            duration: 2
+        }, 0)
+    }
+    
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }
                     onPointerLeave={ eventOnPointerLeaveHandler }
+                    onClick={ eventOnClick }
             >
                 <mesh   geometry={ shelf.nodes.Bookshelf.geometry }
                         position={ shelf.nodes.Bookshelf.position }
