@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react"
 
 // Context
-import { AppContext } from "../context/AppContext"
+import { AppContext, AppSetterContext } from "../context/AppContext"
 
 // React Components
 import Riri from "./Riri"
@@ -20,6 +20,9 @@ export default function HtmlExperience()
         AmbientAudio.volume = 0.25
         AmbientAudio.play()
     }, [])
+    
+    // Get app context setter
+    const setApp = useContext(AppSetterContext)
 
     // Loading
     const [loading, setLoading] = useState(true)
@@ -32,6 +35,7 @@ export default function HtmlExperience()
     // Presentation
         // Index
     let i = 0
+    let nextAction = true
     const max = data.length - 1
 
     const [chat, setChat] = useState(data[i].text)
@@ -39,24 +43,29 @@ export default function HtmlExperience()
     const [canMove, setCanMove] = useState(false)
 
     const nextChat = (e) => {
-
-        if (i < max) {
-            if (e.type === "keydown" && e.key === "Enter") {
-                if (i !== 8) {
-                    i++
-                    setChat(data[i].text)
-                    setTimeChat(data[i].time)
+        if (nextAction) {
+            if (i < max) {
+                if (e.type === "keydown" && e.key === "Enter") {
+                    if (i !== 8) {
+                        i++
+                        setChat(data[i].text)
+                        setTimeChat(data[i].time)
+                        nextAction = false
+                        setTimeout(() => { nextAction = true }, data[i].time * 1000)
+                    }
+                } else if (e.type === "click" && e.target.id === "riri") {
+                    if (i === 8) {
+                        i++
+                        setCanMove(true)
+                        setChat(data[i].text)
+                        setTimeChat(data[i].time)
+                        nextAction = false
+                        setTimeout(() => { nextAction = true }, data[i].time * 1000)
+                    }
                 }
-            } else if (e.type === "click" && e.target.id === "riri") {
-                if (i === 8) {
-                    i++
-                    setCanMove(true)
-                    setChat(data[i].text)
-                    setTimeChat(data[i].time)
-                }
+            } else {
+                setLoading(false)
             }
-        } else {
-            setLoading(false)
         }
     }
 

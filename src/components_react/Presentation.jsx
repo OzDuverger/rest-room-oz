@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react"
-import { gsap } from "gsap"
-import { TextPlugin } from "gsap/TextPlugin"
+import { useEffect, useRef, useContext } from "react"
+import { speaking } from "../usefull/Speaking"
 
 export default function Presentation(
     {
@@ -10,33 +9,14 @@ export default function Presentation(
     }
 )
 {
-    // Sounds part
-    const SpeakSound = new Audio("./sounds/sound-effect-toriel.mp3")
-
-    // Text part
-    gsap.registerPlugin(TextPlugin)
-
     const chatRef = useRef()
-
+    
     useEffect(() => {
         document.addEventListener("keydown", nextChat, true)
-        SpeakSound.volume = 0.5
     }, [])
 
     useEffect(() => {
-
-        SpeakSound.play()
-
-        const tl = gsap.timeline()
-
-        tl.to(chatRef.current, {
-            text: '',
-            duration: 0
-        }, 0)
-        tl.to(chatRef.current, {
-            duration: timeChat,
-            text: chat
-        }, 0.1)
+        speaking(chatRef.current, timeChat, chat)
     }, [chat])
 
     return  <>

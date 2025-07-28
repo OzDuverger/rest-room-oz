@@ -2,15 +2,15 @@ import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
 import { AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
-import { gsap } from "gsap"
+import { camGoesTo } from "../usefull/Camera"
 
 export default function Bench()
 {
-    // Get app context setter
-    const setApp = useContext(AppSetterContext)
-    
     // Camera
     const { gl, camera } = useThree()
+    
+    // Get app context setter
+    const setApp = useContext(AppSetterContext)
 
     // Load model
     const bench = useGLTF("./models/bench.glb")
@@ -33,13 +33,16 @@ export default function Bench()
     }
 
     const eventOnClick = () => {
-        const tl = gsap.timeline()
-        tl.to(camera.position, {
+        const pos = {
             x: 1.75,
             y: -1.45,
-            z: 0,
-            duration: 2
-        }, 0)
+            z: 0.5
+        }
+        const rot = {
+            x: 0,
+            y:  -0.05
+        }
+        camGoesTo(camera, pos, rot)
     }
 
     return <group   onPointerEnter={ eventOnPointerEnterHandler }

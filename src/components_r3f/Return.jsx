@@ -1,6 +1,6 @@
 import { useThree } from "@react-three/fiber"
 import { useEffect } from "react"
-import { gsap } from "gsap"
+import { camInitPos, camGoesTo } from "../usefull/Camera"
 
 export default function Return()
 {
@@ -10,11 +10,6 @@ export default function Return()
 
     // Camera
     const { gl, camera } = useThree()
-    const initialPos = {
-        x: camera.position.x,
-        y: camera.position.y,
-        z: camera.position.z
-    }
     const initialRot = {
         x: camera.rotation.x,
         y: camera.rotation.y,
@@ -24,19 +19,7 @@ export default function Return()
     const eventOnClick = (e) => {
 
         if (e.key === "Escape") {
-            const tl = gsap.timeline()
-            tl.to(camera.position, {
-                x: initialPos.x,
-                y: initialPos.y,
-                z: initialPos.z,
-                duration: 2
-            }, 0)
-            tl.to(camera.rotation, {
-                x: initialRot.x,
-                y: initialRot.y,
-                z: initialRot.z,
-                duration: 2
-            }, 0)
+            camGoesTo(camera, camInitPos, initialRot)
         }
     }
 

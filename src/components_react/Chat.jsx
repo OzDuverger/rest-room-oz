@@ -1,12 +1,9 @@
 import { useContext, useEffect, useState, useRef } from "react"
 import { AppContext } from "../context/AppContext"
-import { gsap } from "gsap"
-import { TextPlugin } from "gsap/TextPlugin"
+import { speaking } from "../usefull/Speaking"
 
 export default function Chat()
 {
-    gsap.registerPlugin(TextPlugin)
-    
     const chatRef = useRef()
     
     const [chat, setChat] = useState(null)
@@ -17,16 +14,7 @@ export default function Chat()
     }, [app.hover])
 
     useEffect(() => {
-        const tl = gsap.timeline()
-
-        tl.to(chatRef.current, {
-            text: '',
-            duration: 0
-        }, 0)
-        tl.to(chatRef.current, {
-            duration: 1,
-            text: chat
-        }, 0.1)
+        speaking(chatRef.current, 1, chat)
     }, [chat])
 
     return  <section id="chat">

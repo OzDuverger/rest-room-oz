@@ -1,4 +1,4 @@
-import { Center, PresentationControls, OrbitControls } from "@react-three/drei"
+import { Center } from "@react-three/drei"
 import { Suspense } from "react"
 
 // R3F Components
@@ -17,23 +17,16 @@ export default function Experience()
                 {/* <Suspense
                     fallback={ <Riri /> }
                 > */}
-                {/* <OrbitControls makeDefault /> */}
-                    {/* <PresentationControls   global
-                                            polar={ [-0.15, 0.25] }
-                                            azimuth={ [-0.25, 0.25] }
-                                            snap
-                    > */}
-                        <Return />
-                        <Center>
-                            <Room />
-                            <Games />
-                            <Barrel />
-                            <Table />
-                            <Chimney />
-                            <Bench />
-                            <Shelf />
-                        </Center>
-                    {/* </PresentationControls> */}
+                <Return />
+                <Center>
+                    <Room />
+                    <Games />
+                    <Barrel />
+                    <Table />
+                    <Chimney />
+                    <Bench />
+                    <Shelf />
+                </Center>
                 {/* </Suspense> */}
             </>
 }

@@ -2,15 +2,15 @@ import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
 import { AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
-import { gsap } from "gsap"
+import { camGoesTo } from "../usefull/Camera"
 
 export default function Barrel()
 {
-    // Get app context setter
-    const setApp = useContext(AppSetterContext)
-
     // Camera
     const { gl, camera } = useThree()
+
+    // Get app context setter
+    const setApp = useContext(AppSetterContext)
 
     // Load model
     const barrel = useGLTF("./models/barrel.glb")
@@ -33,18 +33,17 @@ export default function Barrel()
     }
     
     const eventOnClick = (event) => {
-        const tl = gsap.timeline()
-        tl.to(camera.position, {
+        const pos = {
             x: -0.15,
-            y: -1.20,
-            z: 2.25,
-            duration: 2
-        }, 0)
-        tl.to(camera.rotation, {
+            y: -1.2,
+            z: 2.25
+        }
+        const rot = {
             x: -0.05,
             y: 1.3,
-            duration: 2
-        }, 0)
+            z: 0
+        }
+        camGoesTo(camera, pos, rot)
     }
 
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }

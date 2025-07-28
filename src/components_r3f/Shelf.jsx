@@ -2,7 +2,7 @@ import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
 import { AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
-import { gsap } from "gsap"
+import { camGoesTo } from "../usefull/Camera"
 
 export default function Shelf()
 {
@@ -33,18 +33,16 @@ export default function Shelf()
     }
     
     const eventOnClick = (event) => {
-        const tl = gsap.timeline()
-        tl.to(camera.position, {
+        const pos = {
             x: 1.75,
             y: -1.05,
-            z: 0,
-            duration: 2
-        }, 0)
-        tl.to(camera.rotation, {
+            z: 0
+        }
+        const rot = {
             x: -0.05,
-            y: 1.5,
-            duration: 2
-        }, 0)
+            y: 1.5
+        }
+        camGoesTo(camera, pos, rot)
     }
     
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }

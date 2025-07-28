@@ -1,12 +1,11 @@
-import { Html, useTexture, useGLTF, OrbitControls } from "@react-three/drei"
+import { Html, useTexture, useGLTF } from "@react-three/drei"
 import { useContext, useRef, useEffect, useState } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
-import { gsap } from "gsap"
+import { camGoesTo } from "../usefull/Camera"
 
 // Context
-import { AppSetterContext } from "../context/AppContext"
-import { AppContext } from "../context/AppContext"
+import { AppSetterContext, AppContext } from "../context/AppContext"
 
 // Shaders
 import coffeeSmokeVertexShader from "../shaders/smoke/vertex.glsl"
@@ -60,12 +59,12 @@ export default function Table()
     }
 
     const eventOnClick = (event) => {
-        gsap.to(camera.position, {
+        const pos = {
             x: 2.45,
             y: -1.95,
-            z: 2.25,
-            duration: 2
-        })
+            z: 2.25
+        }
+        camGoesTo(camera, pos)
     }
 
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }
