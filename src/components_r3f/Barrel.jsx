@@ -12,7 +12,8 @@ import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefu
 export default function Barrel()
 {
     // Const def
-    const HOVER_TEXT = "Bartender"
+    const HOVER_TEXT = "Oz likes night life and especially bartender's life"
+    const HOVER_TIME = 3
     const FOCUS = "Barrel"
 
     // Camera
@@ -31,26 +32,26 @@ export default function Barrel()
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
 
     const cylinderPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Receipes")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Oz' receipes")
     }
     
     const icospherePointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Experiences")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Oz' experiences")
     }
 
     const trianglePointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Contact")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Do you want to contact Oz ?", 2)
     }
     
     const onPointerLeave = (event) => {
         eventOnPointerLeaveHandler(app, setApp)
     }
     
-    const eventOnClick = (event) => {
+    const groupOnClick = (event) => {
         const pos = {
             x: -0.15,
             y: -1.2,
@@ -64,10 +65,25 @@ export default function Barrel()
         camGoesTo(camera, pos, rot)
         setApp({...app, focus: FOCUS})
     }
+    
+    const icosphereOnClick = (event) => {
+        setApp({...app, information: "bartender-experiences"})
+        // DEBUG !!!
+        console.log("BOTTLE CLICKED")
+        console.log(app)
+        // DEBUG !!!
+    }
+
+    const cylinderOnClick = (event) => {
+        // DEBUG !!!
+        console.log("BOTTLE BIS CLICKED")
+        console.log(app.information)
+        // DEBUG !!!
+    }
 
     return  <group  onPointerEnter={ groupPointerEnter }
                     onPointerLeave={ onPointerLeave }
-                    onClick={ eventOnClick }
+                    onClick={ groupOnClick }
             >
                 <mesh   geometry={ barrel.nodes.Barrel.geometry }
                         position={ barrel.nodes.Barrel.position }
@@ -80,6 +96,7 @@ export default function Barrel()
                         rotation={ barrel.nodes.Bottle_cylinder.rotation }
                         onPointerEnter={ cylinderPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ cylinderOnClick }
                 >
                     <meshBasicMaterial map={ barrelBakedTexture } />
                 </mesh>
@@ -88,6 +105,7 @@ export default function Barrel()
                         rotation={ barrel.nodes.Bottle_icosphere.rotation }
                         onPointerEnter={ icospherePointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ icosphereOnClick }
                 >
                     <meshBasicMaterial map={ barrelBakedTexture } />
                 </mesh>

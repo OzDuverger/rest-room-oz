@@ -127,6 +127,29 @@ html {
                 }
             }
 
+            #bar-experiences {
+                position: fixed;
+                z-index: 42;
+                left: 0;
+                top: 0;
+                margin: 15px auto;
+                width: 100%;
+
+                .experiences {
+                    @include flex();
+                    width: 100%;
+                    border-radius: 20px;
+                    margin: 5px auto;
+                    padding: 15px 50px;
+                    height: 90vh;
+                    overflow: auto;
+                    background-color: rgba(black, 0.5);
+                    border: 5px solid rgba($orange, 0.75);
+                    border-style: solid double;
+                    box-shadow: rgba($orange, 0.25) 0px 30px 60px -12px inset, rgba($orange, 0.3) 0px 18px 36px -18px inset;
+                }
+            }
+
             #presentation {
                 // DEBUG !!!
                 background-color: $black;

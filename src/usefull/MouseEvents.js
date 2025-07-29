@@ -1,8 +1,8 @@
-export function eventOnPointerEnterHandler(app, validFocus, setApp, hover)
+export function eventOnPointerEnterHandler(app, validFocus, setApp, hover, hoverTime = 1)
 {
     if (app.focus === validFocus) {
         document.body.style.cursor = "pointer"
-        setApp({...app, hover: hover })
+        setApp({...app, hover: hover, hoverTime: hoverTime })
     }
 }
 

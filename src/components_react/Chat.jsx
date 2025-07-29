@@ -19,8 +19,8 @@ export default function Chat()
     useEffect(() => {
         if (chat !== null) {
             setNextAction(false)
-            speaking(chatRef.current, 1, chat)
-            setTimeout(() => { setNextAction(true) }, 1500)
+            speaking(chatRef.current, app.hoverTime, chat)
+            setTimeout(() => { setNextAction(true) }, app.hoverTime * 1500)
         }
     }, [chat])
 

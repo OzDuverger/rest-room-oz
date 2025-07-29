@@ -17,7 +17,8 @@ import coffeeSmokeFragmentShader from "../shaders/smoke/fragment.glsl"
 export default function Table()
 {
     // Const def
-    const HOVER_TEXT = "Developer"
+    const HOVER_TEXT = "Oz is an accomplished developer"
+    const HOVER_TIME = 2
     const FOCUS = "Table"
 
     // Loading
@@ -54,7 +55,7 @@ export default function Table()
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
 
     const groupPointerLeave = (event) => {

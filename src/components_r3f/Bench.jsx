@@ -12,7 +12,8 @@ import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefu
 export default function Bench()
 {
     // Const def
-    const HOVER_TEXT = "Human-does-everything"
+    const HOVER_TEXT = "First of all, oz is a human-does-everything"
+    const HOVER_TIME = 2
     const FOCUS = "Bench"
 
     // Camera
@@ -31,7 +32,7 @@ export default function Bench()
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
     
     const hammerPointerEnter = (event) => {

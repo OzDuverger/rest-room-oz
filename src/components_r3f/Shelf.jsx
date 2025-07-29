@@ -12,7 +12,8 @@ import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefu
 export default function Shelf()
 {
     // Const def
-    const HOVER_TEXT = "Hobbies"
+    const HOVER_TEXT = "Oz has diverse and varied hobbies"
+    const HOVER_TIME = 2
     const FOCUS = "Shelf"
 
     // Get app context setter
@@ -31,7 +32,7 @@ export default function Shelf()
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
 
     const topLeftBooksPointerEnter = (event) => {

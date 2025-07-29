@@ -7,6 +7,7 @@ import { AppContext, AppSetterContext } from "../context/AppContext"
 import Riri from "./Riri"
 import Chat from "./Chat"
 import Presentation from "./Presentation"
+import BarExperiences from "./Bartender/Experiences"
 
 // Texts
 import data from "../texts/presentation.json"
@@ -30,6 +31,16 @@ export default function HtmlExperience()
     // Loading
     const [loading, setLoading] = useState(true)
     const app = useContext(AppContext)
+
+    // Informations
+    const [information, setInformation] = useState(null)
+
+    useEffect(() => {
+        setInformation(app.information)
+        // DEBUG !!!
+        console.log(app.information)
+        // DEBUG !!!
+    }, [app.information])
 
     useEffect(() => {
         setLoading(app.loading)
@@ -76,6 +87,7 @@ export default function HtmlExperience()
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <Riri canMove={ canMove } nextChat={ nextChat } />
                     { loading ? (<Presentation chat={ chat } timeChat={ timeChat } nextChat={ nextChat } />) : null }
+                    { information === "bartender-experiences" ? <BarExperiences /> : null }
                     <Chat />
                 </div>
             </>

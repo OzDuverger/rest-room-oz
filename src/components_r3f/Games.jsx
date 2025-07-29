@@ -12,7 +12,8 @@ import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefu
 export default function Games()
 {
     // Const def
-    const HOVER_TEXT = "Game Master and Animator"
+    const HOVER_TEXT = "As a great player, Oz is also Game Master and Animator"
+    const HOVER_TIME = 3
     const FOCUS = "Games"
 
     // Camera
@@ -31,7 +32,7 @@ export default function Games()
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
 
     const cubeLeftPointerEnter = (event) => {
