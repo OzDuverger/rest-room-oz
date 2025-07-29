@@ -1,6 +1,6 @@
 import { useTexture, useGLTF } from "@react-three/drei"
-import { useContext } from "react"
-import { AppSetterContext } from "../context/AppContext"
+import { useContext, useEffect, useState } from "react"
+import { AppContext, AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
 import { camGoesTo } from "../usefull/Camera"
 
@@ -9,7 +9,8 @@ export default function Barrel()
     // Camera
     const { gl, camera } = useThree()
 
-    // Get app context setter
+    // Get app context
+    const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
 
     // Load model
@@ -22,14 +23,16 @@ export default function Barrel()
     // Mouse events handlers
     const eventOnPointerEnterHandler = (event) => {
 
-        document.body.style.cursor = "pointer"
-        setApp({ hover: "Barrel" })
+        if (app.focus === null) {
+            document.body.style.cursor = "pointer"
+            setApp({...app, hover: "Barrel" })
+        }
     }
     
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
-        setApp({ hover: null })
+        setApp({...app, hover: null })
     }
     
     const eventOnClick = (event) => {
@@ -44,6 +47,7 @@ export default function Barrel()
             z: 0
         }
         camGoesTo(camera, pos, rot)
+        setApp({...app, focus: "Barrel"})
     }
 
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }

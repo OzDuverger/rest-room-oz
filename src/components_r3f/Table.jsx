@@ -48,14 +48,16 @@ export default function Table()
     // Mouse events handlers
     const eventOnPointerEnterHandler = (event) => {
 
-        document.body.style.cursor = "pointer"
-        setApp({ hover: "Table" })
+        if (app.focus === null) {
+            document.body.style.cursor = "pointer"
+            setApp({...app, hover: "Table" })
+        }
     }
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
-        setApp({ hover: null })
+        setApp({...app, hover: null })
     }
 
     const eventOnClick = (event) => {
@@ -65,6 +67,7 @@ export default function Table()
             z: 2.25
         }
         camGoesTo(camera, pos)
+        setApp({...app, focus: "Table"})
     }
 
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }

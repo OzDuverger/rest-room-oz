@@ -1,6 +1,6 @@
 import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
-import { AppSetterContext } from "../context/AppContext"
+import { AppContext, AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
 import { camGoesTo } from "../usefull/Camera"
 
@@ -10,6 +10,7 @@ export default function Bench()
     const { gl, camera } = useThree()
     
     // Get app context setter
+    const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
 
     // Load model
@@ -22,14 +23,16 @@ export default function Bench()
     // Mouse events handlers
     const eventOnPointerEnterHandler = (event) => {
 
-        document.body.style.cursor = "pointer"
-        setApp({ hover: "Bench" })
+        if (app.focus === null) {
+            document.body.style.cursor = "pointer"
+            setApp({...app, hover: "Bench" })
+        }
     }
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
-        setApp({ hover: null })
+        setApp({...app, hover: null })
     }
 
     const eventOnClick = () => {
@@ -43,6 +46,7 @@ export default function Bench()
             y:  -0.05
         }
         camGoesTo(camera, pos, rot)
+        setApp({...app, focus: "Bench" })
     }
 
     return <group   onPointerEnter={ eventOnPointerEnterHandler }

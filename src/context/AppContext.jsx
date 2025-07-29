@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const AppContext = createContext(null)
 export const AppSetterContext = createContext(null)
@@ -6,9 +6,9 @@ export const AppSetterContext = createContext(null)
 export function AppProvider({ children })
 {
     const [app, setApp] = useState({
-        place: "all",
         hover: null,
-        loading: true
+        loading: true,
+        focus: null
     })
 
     return  <AppContext.Provider value={ app }>

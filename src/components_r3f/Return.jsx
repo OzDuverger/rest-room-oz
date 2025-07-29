@@ -1,12 +1,17 @@
 import { useThree } from "@react-three/fiber"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { camInitPos, camGoesTo } from "../usefull/Camera"
+import { AppContext, AppSetterContext } from "../context/AppContext"
 
 export default function Return()
 {
     useEffect(() => {
         document.addEventListener("keydown", eventOnClick, true)
     }, [])
+
+    // Get Context
+    const app = useContext(AppContext)
+    const setApp = useContext(AppSetterContext)
 
     // Camera
     const { gl, camera } = useThree()
@@ -20,6 +25,7 @@ export default function Return()
 
         if (e.key === "Escape") {
             camGoesTo(camera, camInitPos, initialRot)
+            setApp({...app, focus: null})
         }
     }
 

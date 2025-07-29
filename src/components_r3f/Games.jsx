@@ -1,6 +1,6 @@
 import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
-import { AppSetterContext } from "../context/AppContext"
+import { AppContext, AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
 import { camGoesTo } from "../usefull/Camera"
 
@@ -10,26 +10,29 @@ export default function Games()
     const { gl, camera } = useThree()
 
     // Get app context setter
+    const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
 
     // Load model
     const games = useGLTF("./models/games.glb")
 
     // Load texture
-    const roomBakedTexture = useTexture('./textures/room-baked.jpg')
+    const roomBakedTexture = useTexture("./textures/room-baked.jpg")
     roomBakedTexture.flipY = false
 
     // Mouse events handlers
     const eventOnPointerEnterHandler = (event) => {
 
-        document.body.style.cursor = "pointer"
-        setApp({ hover: "Games" })
+        if (app.focus === null) {
+            document.body.style.cursor = "pointer"
+            setApp({...app, hover: "Games" })
+        }
     }
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
-        setApp({ hover: null })
+        setApp({...app, hover: null })
     }
 
     const eventOnClick = () => {
@@ -39,6 +42,7 @@ export default function Games()
             z: 0.75
         }
         camGoesTo(camera, pos)
+        setApp({...app, focus: "Games" })
     }
 
     return  <>

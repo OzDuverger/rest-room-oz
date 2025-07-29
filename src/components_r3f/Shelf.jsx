@@ -1,12 +1,13 @@
 import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
-import { AppSetterContext } from "../context/AppContext"
+import { AppContext, AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
 import { camGoesTo } from "../usefull/Camera"
 
 export default function Shelf()
 {
     // Get app context setter
+    const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
 
     // Camera
@@ -22,14 +23,16 @@ export default function Shelf()
     // Mouse events handlers
     const eventOnPointerEnterHandler = (event) => {
     
-        document.body.style.cursor = "pointer"
-        setApp({ hover: "Shelf" })
+        if (app.focus === null) {
+            document.body.style.cursor = "pointer"
+            setApp({...app, hover: "Shelf" })
+        }
     }
 
     const eventOnPointerLeaveHandler = (event) => {
 
         document.body.style.cursor = "default"
-        setApp({ hover: null })
+        setApp({...app, hover: null })
     }
     
     const eventOnClick = (event) => {
@@ -43,6 +46,7 @@ export default function Shelf()
             y: 1.5
         }
         camGoesTo(camera, pos, rot)
+        setApp({...app, focus: "Shelf" })
     }
     
     return  <group  onPointerEnter={ eventOnPointerEnterHandler }
