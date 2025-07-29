@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { AppContext, AppSetterContext } from "../context/AppContext"
 import { useThree } from "@react-three/fiber"
 import { camGoesTo } from "../usefull/Camera"
+import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 export default function Barrel()
 {
@@ -21,18 +22,24 @@ export default function Barrel()
     barrelBakedTexture.flipY = false
 
     // Mouse events handlers
-    const eventOnPointerEnterHandler = (event) => {
+    const groupPointerEnter = (event) => {
+        eventOnPointerEnterHandler(app, null, setApp, "Barrel")
+    }
 
-        if (app.focus === null) {
-            document.body.style.cursor = "pointer"
-            setApp({...app, hover: "Barrel" })
-        }
+    const cylinderPointerEnter = (event) => {
+        eventOnPointerEnterHandler(app, "Barrel", setApp, "Receipes")
     }
     
-    const eventOnPointerLeaveHandler = (event) => {
+    const icospherePointerEnter = (event) => {
+        eventOnPointerEnterHandler(app, "Barrel", setApp, "Experiences")
+    }
 
-        document.body.style.cursor = "default"
-        setApp({...app, hover: null })
+    const trianglePointerEnter = (event) => {
+        eventOnPointerEnterHandler(app, "Barrel", setApp, "Contact")
+    }
+    
+    const onPointerLeave = (event) => {
+        eventOnPointerLeaveHandler(app, setApp)
     }
     
     const eventOnClick = (event) => {
@@ -50,8 +57,8 @@ export default function Barrel()
         setApp({...app, focus: "Barrel"})
     }
 
-    return  <group  onPointerEnter={ eventOnPointerEnterHandler }
-                    onPointerLeave={ eventOnPointerLeaveHandler }
+    return  <group  onPointerEnter={ groupPointerEnter }
+                    onPointerLeave={ onPointerLeave }
                     onClick={ eventOnClick }
             >
                 <mesh   geometry={ barrel.nodes.Barrel.geometry }
@@ -63,18 +70,24 @@ export default function Barrel()
                 <mesh   geometry={ barrel.nodes.Bottle_cylinder.geometry }
                         position={ barrel.nodes.Bottle_cylinder.position }
                         rotation={ barrel.nodes.Bottle_cylinder.rotation }
+                        onPointerEnter={ cylinderPointerEnter }
+                        onPointerLeave={ onPointerLeave }
                 >
                     <meshBasicMaterial map={ barrelBakedTexture } />
                 </mesh>
                 <mesh   geometry={ barrel.nodes.Bottle_icosphere.geometry }
                         position={ barrel.nodes.Bottle_icosphere.position }
                         rotation={ barrel.nodes.Bottle_icosphere.rotation }
+                        onPointerEnter={ icospherePointerEnter }
+                        onPointerLeave={ onPointerLeave }
                 >
                     <meshBasicMaterial map={ barrelBakedTexture } />
                 </mesh>
                 <mesh   geometry={ barrel.nodes.Bottle_triangle.geometry }
                         position={ barrel.nodes.Bottle_triangle.position }
                         rotation={ barrel.nodes.Bottle_triangle.rotation }
+                        onPointerEnter={ trianglePointerEnter }
+                        onPointerLeave={ onPointerLeave }
                 >
                     <meshBasicMaterial map={ barrelBakedTexture } />
                 </mesh>

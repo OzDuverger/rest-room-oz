@@ -3,6 +3,7 @@ import { useContext, useRef, useEffect, useState } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
 import { camGoesTo } from "../usefull/Camera"
+import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 // Context
 import { AppSetterContext, AppContext } from "../context/AppContext"
@@ -46,18 +47,12 @@ export default function Table()
     perlinTexture.wrapT = THREE.RepeatWrapping
 
     // Mouse events handlers
-    const eventOnPointerEnterHandler = (event) => {
-
-        if (app.focus === null) {
-            document.body.style.cursor = "pointer"
-            setApp({...app, hover: "Table" })
-        }
+    const groupPointerEnter = (event) => {
+        eventOnPointerEnterHandler(app, null, setApp, "Table")
     }
 
-    const eventOnPointerLeaveHandler = (event) => {
-
-        document.body.style.cursor = "default"
-        setApp({...app, hover: null })
+    const groupPointerLeave = (event) => {
+        eventOnPointerLeaveHandler(app, setApp)
     }
 
     const eventOnClick = (event) => {
@@ -70,8 +65,8 @@ export default function Table()
         setApp({...app, focus: "Table"})
     }
 
-    return  <group  onPointerEnter={ eventOnPointerEnterHandler }
-                    onPointerLeave={ eventOnPointerLeaveHandler }
+    return  <group  onPointerEnter={ groupPointerEnter }
+                    onPointerLeave={ groupPointerLeave }
                     onClick={ eventOnClick }
             >
                 <mesh   geometry={ table.nodes.Table.geometry }
