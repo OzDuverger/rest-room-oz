@@ -1,12 +1,14 @@
-import { Html, useTexture, useGLTF } from "@react-three/drei"
 import { useContext, useRef, useEffect, useState } from "react"
+import { Html, useTexture, useGLTF } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
-import { camGoesTo } from "../usefull/Camera"
-import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 // Context
 import { AppSetterContext, AppContext } from "../context/AppContext"
+
+// Usefull
+import { camGoesTo } from "../usefull/Camera"
+import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 // Shaders
 import coffeeSmokeVertexShader from "../shaders/smoke/vertex.glsl"
@@ -14,6 +16,10 @@ import coffeeSmokeFragmentShader from "../shaders/smoke/fragment.glsl"
 
 export default function Table()
 {
+    // Const def
+    const HOVER_TEXT = "Developer"
+    const FOCUS = "Table"
+
     // Loading
     const [loading, setLoading] = useState(true)
     const app = useContext(AppContext)
@@ -48,7 +54,7 @@ export default function Table()
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, "Table")
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
     }
 
     const groupPointerLeave = (event) => {
@@ -62,7 +68,7 @@ export default function Table()
             z: 2.25
         }
         camGoesTo(camera, pos)
-        setApp({...app, focus: "Table"})
+        setApp({...app, focus: FOCUS})
     }
 
     return  <group  onPointerEnter={ groupPointerEnter }

@@ -1,5 +1,4 @@
 import { Center } from "@react-three/drei"
-import { Suspense } from "react"
 
 // R3F Components
 import Room from "./Room"
@@ -14,9 +13,6 @@ import Return from "./Return"
 export default function Experience()
 {
     return  <>
-                {/* <Suspense
-                    fallback={ <Riri /> }
-                > */}
                 <Return />
                 <Center>
                     <Room />
@@ -27,6 +23,5 @@ export default function Experience()
                     <Bench />
                     <Shelf />
                 </Center>
-                {/* </Suspense> */}
             </>
 }

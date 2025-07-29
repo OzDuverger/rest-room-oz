@@ -6,7 +6,7 @@ export default function Room()
     const room = useGLTF("./models/room.glb")
     
     // Load texture
-    const roomBakedTexture = useTexture('./textures/room-baked.jpg')
+    const roomBakedTexture = useTexture("./textures/room-baked.jpg")
     roomBakedTexture.flipY = false
 
     return <group>

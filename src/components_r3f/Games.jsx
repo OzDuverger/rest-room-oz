@@ -1,12 +1,20 @@
-import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
-import { AppContext, AppSetterContext } from "../context/AppContext"
+import { useTexture, useGLTF } from "@react-three/drei"
 import { useThree } from "@react-three/fiber"
+
+// Context
+import { AppContext, AppSetterContext } from "../context/AppContext"
+
+// Usefull
 import { camGoesTo } from "../usefull/Camera"
 import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 export default function Games()
 {
+    // Const def
+    const HOVER_TEXT = "Game Master and Animator"
+    const FOCUS = "Games"
+
     // Camera
     const { gl, camera } = useThree()
 
@@ -23,19 +31,19 @@ export default function Games()
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, "Games")
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
     }
 
     const cubeLeftPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Games", setApp, "Experiences")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Experiences")
     }
 
     const cubeCenterPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Games", setApp, "Activities")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Activities")
     }
 
     const cubesRightPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Games", setApp, "Contact")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Contact")
     }
 
     const onPointerLeave = (event) => {
@@ -49,7 +57,7 @@ export default function Games()
             z: 0.75
         }
         camGoesTo(camera, pos)
-        setApp({...app, focus: "Games" })
+        setApp({...app, focus: FOCUS })
     }
 
     return  <>

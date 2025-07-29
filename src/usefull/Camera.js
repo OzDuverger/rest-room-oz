@@ -16,8 +16,7 @@ export function camGoesTo(camera, pos = { x: 6, y: 1, z: 12 }, rot = null)
         tl.to(camera.rotation, {
             x: rot.x,
             y: rot.y,
-            duration: 2,
-            onComplete: () => {console.log("cam complete")}
+            duration: 2
         }, 0)
     }
 }

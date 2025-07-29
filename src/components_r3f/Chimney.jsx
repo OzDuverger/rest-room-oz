@@ -6,7 +6,7 @@ export default function Chimney()
     const chimney = useGLTF("./models/chimney.glb")
     
     // Load texture
-    const chimneyBakedTexture = useTexture('./textures/chimney-baked.jpg')
+    const chimneyBakedTexture = useTexture("./textures/chimney-baked.jpg")
     chimneyBakedTexture.flipY = false
 
     return <group>

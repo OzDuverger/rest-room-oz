@@ -1,12 +1,16 @@
-import { useThree } from "@react-three/fiber"
 import { useContext, useEffect } from "react"
-import { camInitPos, camGoesTo } from "../usefull/Camera"
+import { useThree } from "@react-three/fiber"
+
+// Context
 import { AppContext, AppSetterContext } from "../context/AppContext"
+
+// Usefull
+import { camInitPos, camGoesTo } from "../usefull/Camera"
 
 export default function Return()
 {
     useEffect(() => {
-        document.addEventListener("keydown", eventOnClick, true)
+        document.addEventListener("keydown", goBackGlobal, true)
     }, [])
 
     // Get Context
@@ -21,7 +25,8 @@ export default function Return()
         z: camera.rotation.z
     }
 
-    const eventOnClick = (e) => {
+    // Keyboard event
+    const goBackGlobal = (e) => {
 
         if (e.key === "Escape") {
             camGoesTo(camera, camInitPos, initialRot)

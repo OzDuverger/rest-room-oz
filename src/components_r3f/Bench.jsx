@@ -1,12 +1,20 @@
-import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
-import { AppContext, AppSetterContext } from "../context/AppContext"
+import { useTexture, useGLTF } from "@react-three/drei"
 import { useThree } from "@react-three/fiber"
+
+// Context
+import { AppContext, AppSetterContext } from "../context/AppContext"
+
+// Usefull
 import { camGoesTo } from "../usefull/Camera"
 import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 export default function Bench()
 {
+    // Const def
+    const HOVER_TEXT = "Human-does-everything"
+    const FOCUS = "Bench"
+
     // Camera
     const { gl, camera } = useThree()
     
@@ -18,24 +26,24 @@ export default function Bench()
     const bench = useGLTF("./models/bench.glb")
     
     // Load texture
-    const benchBakedTexture = useTexture('./textures/bench-baked.jpg')
+    const benchBakedTexture = useTexture("./textures/bench-baked.jpg")
     benchBakedTexture.flipY = false
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, "Bench")
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
     }
     
     const hammerPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Bench", setApp, "Knit and Hook")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Knit and Hook")
     }
     
     const spannerPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Bench", setApp, "Furniture")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Furniture")
     }
     
     const screwPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Bench", setApp, "Clothes")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Clothes")
     }
 
     const onPointerLeave = (event) => {
@@ -53,7 +61,7 @@ export default function Bench()
             y:  -0.05
         }
         camGoesTo(camera, pos, rot)
-        setApp({...app, focus: "Bench" })
+        setApp({...app, focus: FOCUS })
     }
 
     return <group   onPointerEnter={ groupPointerEnter }

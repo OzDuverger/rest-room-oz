@@ -20,7 +20,7 @@ export default function HtmlExperience()
         AmbientAudio.volume = 0.25
         AmbientAudio.play()
         // DEBUG !!!
-        setApp({...app, loading: false})
+        // setApp({...app, loading: false})
         // DEBUG !!!
     }, [])
     
@@ -74,7 +74,7 @@ export default function HtmlExperience()
 
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
-                    {/* <Riri canMove={ canMove } nextChat={ nextChat } /> */}
+                    <Riri canMove={ canMove } nextChat={ nextChat } />
                     { loading ? (<Presentation chat={ chat } timeChat={ timeChat } nextChat={ nextChat } />) : null }
                     <Chat />
                 </div>

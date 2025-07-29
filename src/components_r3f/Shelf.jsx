@@ -1,12 +1,20 @@
-import { useTexture, useGLTF } from "@react-three/drei"
 import { useContext } from "react"
-import { AppContext, AppSetterContext } from "../context/AppContext"
+import { useTexture, useGLTF } from "@react-three/drei"
 import { useThree } from "@react-three/fiber"
+
+// Context
+import { AppContext, AppSetterContext } from "../context/AppContext"
+
+// Usefull
 import { camGoesTo } from "../usefull/Camera"
 import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 export default function Shelf()
 {
+    // Const def
+    const HOVER_TEXT = "Hobbies"
+    const FOCUS = "Shelf"
+
     // Get app context setter
     const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
@@ -18,36 +26,36 @@ export default function Shelf()
     const shelf = useGLTF("./models/shelf.glb")
     
     // Load texture
-    const shelfBakedTexture = useTexture('./textures/shelf-baked.jpg')
+    const shelfBakedTexture = useTexture("./textures/shelf-baked.jpg")
     shelfBakedTexture.flipY = false
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, "Hobbies")
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
     }
 
     const topLeftBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Hobbies", setApp, "Languages")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Languages")
     }
 
     const topRightBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Hobbies", setApp, "Music")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Music")
     }
 
     const centerLeftBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Hobbies", setApp, "Board games")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Board games")
     }
 
     const centerRightBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Hobbies", setApp, "Theatre")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Theatre")
     }
 
     const bottomLeftBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Hobbies", setApp, "Sport")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Sport")
     }
 
     const bottomRightBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Hobbies", setApp, "Juggling")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Juggling")
     }
 
     const onPointerLeave = (event) => {
@@ -65,7 +73,7 @@ export default function Shelf()
             y: 1.5
         }
         camGoesTo(camera, pos, rot)
-        setApp({...app, focus: "Hobbies" })
+        setApp({...app, focus: FOCUS })
     }
     
     return  <group  onPointerEnter={ groupPointerEnter }

@@ -1,12 +1,20 @@
-import { useTexture, useGLTF } from "@react-three/drei"
-import { useContext, useEffect, useState } from "react"
-import { AppContext, AppSetterContext } from "../context/AppContext"
+import { useContext } from "react"
 import { useThree } from "@react-three/fiber"
+import { useTexture, useGLTF } from "@react-three/drei"
+
+// Context
+import { AppContext, AppSetterContext } from "../context/AppContext"
+
+// Usefull
 import { camGoesTo } from "../usefull/Camera"
 import { eventOnPointerEnterHandler, eventOnPointerLeaveHandler } from "../usefull/MouseEvents"
 
 export default function Barrel()
 {
+    // Const def
+    const HOVER_TEXT = "Bartender"
+    const FOCUS = "Barrel"
+
     // Camera
     const { gl, camera } = useThree()
 
@@ -18,24 +26,24 @@ export default function Barrel()
     const barrel = useGLTF("./models/barrel.glb")
 
     // Load texture
-    const barrelBakedTexture = useTexture('./textures/barrel-baked.jpg')
+    const barrelBakedTexture = useTexture("./textures/barrel-baked.jpg")
     barrelBakedTexture.flipY = false
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, null, setApp, "Barrel")
+        eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT)
     }
 
     const cylinderPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Barrel", setApp, "Receipes")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Receipes")
     }
     
     const icospherePointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Barrel", setApp, "Experiences")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Experiences")
     }
 
     const trianglePointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, "Barrel", setApp, "Contact")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Contact")
     }
     
     const onPointerLeave = (event) => {
@@ -54,7 +62,7 @@ export default function Barrel()
             z: 0
         }
         camGoesTo(camera, pos, rot)
-        setApp({...app, focus: "Barrel"})
+        setApp({...app, focus: FOCUS})
     }
 
     return  <group  onPointerEnter={ groupPointerEnter }
