@@ -28,7 +28,7 @@ export default function Return()
     // Keyboard event
     const goBackGlobal = (e) => {
 
-        if (e.key === "Escape") {
+        if (e.key === "Escape" && app.information === null) {
             camGoesTo(camera, camInitPos, initialRot)
             setApp({...app, focus: null})
         }

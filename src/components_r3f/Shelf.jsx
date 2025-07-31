@@ -31,6 +31,7 @@ export default function Shelf()
     shelfBakedTexture.flipY = false
 
     // Mouse events handlers
+        // Hover
     const groupPointerEnter = (event) => {
         eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
@@ -62,11 +63,12 @@ export default function Shelf()
     const onPointerLeave = (event) => {
         eventOnPointerLeaveHandler(app, setApp)
     }
-    
-    const eventOnClick = (event) => {
+
+        // Click
+    const groupOnClick = (event) => {
         const pos = {
             x: 1.75,
-            y: -1.05,
+            y: -1.15,
             z: 0
         }
         const rot = {
@@ -74,12 +76,50 @@ export default function Shelf()
             y: 1.5
         }
         camGoesTo(camera, pos, rot)
-        setApp({...app, focus: FOCUS })
+        if (app.focus === null) {
+            setApp({...app, focus: FOCUS })
+        }
+    }
+
+    const topLeftBooksOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "hobbies-languages"})
+        }
+    }
+
+    const topRightBooksOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "hobbies-music"})
+        }
+    }
+
+    const centerRightBooksOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "hobbies-theatre"})
+        }
+    }
+
+    const centerLeftBooksOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "hobbies-board-games"})
+        }
+    }
+
+    const bottomLeftBooksOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "hobbies-sport"})
+        }
+    }
+
+    const bottomRightBooksOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "hobbies-juggling"})
+        }
     }
     
     return  <group  onPointerEnter={ groupPointerEnter }
                     onPointerLeave={ onPointerLeave }
-                    onClick={ eventOnClick }
+                    onClick={ groupOnClick }
             >
                 <mesh   geometry={ shelf.nodes.Bookshelf.geometry }
                         position={ shelf.nodes.Bookshelf.position }
@@ -92,6 +132,7 @@ export default function Shelf()
                         rotation={ shelf.nodes.Blue_Book_2.rotation }
                         onPointerEnter={ topLeftBooksPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ topLeftBooksOnClick }
                 >
                     <meshBasicMaterial map={ shelfBakedTexture } />
                 </mesh>
@@ -100,6 +141,7 @@ export default function Shelf()
                         rotation={ shelf.nodes.Green_Book_1.rotation }
                         onPointerEnter={ topRightBooksPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ topRightBooksOnClick }
                 >
                     <meshBasicMaterial map={ shelfBakedTexture } />
                 </mesh>
@@ -108,6 +150,7 @@ export default function Shelf()
                         rotation={ shelf.nodes.Red_Book_4.rotation }
                         onPointerEnter={ centerLeftBooksPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ centerLeftBooksOnClick }
                 >
                     <meshBasicMaterial map={ shelfBakedTexture } />
                 </mesh>
@@ -116,6 +159,7 @@ export default function Shelf()
                         rotation={ shelf.nodes.Orange_Book_2.rotation }
                         onPointerEnter={ centerRightBooksPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ centerRightBooksOnClick }
                 >
                     <meshBasicMaterial map={ shelfBakedTexture } />
                 </mesh>
@@ -124,6 +168,7 @@ export default function Shelf()
                         rotation={ shelf.nodes.seven_wonders.rotation }
                         onPointerEnter={ bottomLeftBooksPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ bottomLeftBooksOnClick }
                 >
                     <meshBasicMaterial map={ shelfBakedTexture } />
                 </mesh>
@@ -132,6 +177,7 @@ export default function Shelf()
                         rotation={ shelf.nodes.teddy_bear.rotation }
                         onPointerEnter={ bottomRightBooksPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ bottomRightBooksOnClick }
                 >
                     <meshBasicMaterial map={ shelfBakedTexture } />
                 </mesh>

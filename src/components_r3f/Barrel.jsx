@@ -31,6 +31,7 @@ export default function Barrel()
     barrelBakedTexture.flipY = false
 
     // Mouse events handlers
+        // Hover
     const groupPointerEnter = (event) => {
         eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
@@ -50,7 +51,7 @@ export default function Barrel()
     const onPointerLeave = (event) => {
         eventOnPointerLeaveHandler(app, setApp)
     }
-    
+        // Click
     const groupOnClick = (event) => {
         const pos = {
             x: -0.15,
@@ -63,22 +64,27 @@ export default function Barrel()
             z: 0
         }
         camGoesTo(camera, pos, rot)
-        setApp({...app, focus: FOCUS})
+        if (app.focus === null) {
+            setApp({...app, focus: FOCUS})
+        }
     }
     
     const icosphereOnClick = (event) => {
-        setApp({...app, information: "bartender-experiences"})
-        // DEBUG !!!
-        console.log("BOTTLE CLICKED")
-        console.log(app)
-        // DEBUG !!!
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "bartender-experiences"})
+        }
     }
 
     const cylinderOnClick = (event) => {
-        // DEBUG !!!
-        console.log("BOTTLE BIS CLICKED")
-        console.log(app.information)
-        // DEBUG !!!
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "bartender-receipes"})
+        }
+    }
+
+    const triangleOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "bartender-contact"})
+        }
     }
 
     return  <group  onPointerEnter={ groupPointerEnter }
@@ -114,6 +120,7 @@ export default function Barrel()
                         rotation={ barrel.nodes.Bottle_triangle.rotation }
                         onPointerEnter={ trianglePointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ triangleOnClick }
                 >
                     <meshBasicMaterial map={ barrelBakedTexture } />
                 </mesh>

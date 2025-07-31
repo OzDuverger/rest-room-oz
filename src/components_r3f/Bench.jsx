@@ -31,6 +31,7 @@ export default function Bench()
     benchBakedTexture.flipY = false
 
     // Mouse events handlers
+        // Hover
     const groupPointerEnter = (event) => {
         eventOnPointerEnterHandler(app, null, setApp, HOVER_TEXT, HOVER_TIME)
     }
@@ -50,8 +51,8 @@ export default function Bench()
     const onPointerLeave = (event) => {
         eventOnPointerLeaveHandler(app, setApp)
     }
-
-    const eventOnClick = () => {
+        // Click
+    const groupOnClick = () => {
         const pos = {
             x: 1.75,
             y: -1.45,
@@ -62,18 +63,39 @@ export default function Bench()
             y:  -0.05
         }
         camGoesTo(camera, pos, rot)
-        setApp({...app, focus: FOCUS })
+        if (app.focus === null) {
+            setApp({...app, focus: FOCUS })
+        }
+    }
+
+    const hammerOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "craft-knit-and-hook"})
+        }
+    }
+
+    const spannerOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "craft-furniture"})
+        }
+    }
+
+    const screwOnClick = (event) => {
+        if (app.focus === FOCUS) {
+            setApp({...app, information: "craft-clothes"})
+        }
     }
 
     return <group   onPointerEnter={ groupPointerEnter }
                     onPointerLeave={ onPointerLeave }
-                    onClick={ eventOnClick }
+                    onClick={ groupOnClick }
             >
                 <mesh   geometry={ bench.nodes.Hammer.geometry }
                         position={ bench.nodes.Hammer.position }
                         rotation={ bench.nodes.Hammer.rotation }
                         onPointerEnter={ hammerPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ hammerOnClick }
                 >
                     <meshBasicMaterial map={ benchBakedTexture } />
                 </mesh>
@@ -82,6 +104,7 @@ export default function Bench()
                         rotation={ bench.nodes.Spanner_Wrench_3.rotation }
                         onPointerEnter={ spannerPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ spannerOnClick }
                 >
                     <meshBasicMaterial map={ benchBakedTexture } />
                 </mesh>
@@ -90,6 +113,7 @@ export default function Bench()
                         rotation={ bench.nodes.screw_driver_3.rotation }
                         onPointerEnter={ screwPointerEnter }
                         onPointerLeave={ onPointerLeave }
+                        onClick={ screwOnClick }
                 >
                     <meshBasicMaterial map={ benchBakedTexture } />
                 </mesh>

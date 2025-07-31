@@ -136,17 +136,24 @@ html {
                 width: 100%;
 
                 .experiences {
-                    @include flex();
+                    @include flex($direction: column);
                     width: 100%;
                     border-radius: 20px;
                     margin: 5px auto;
                     padding: 15px 50px;
-                    height: 90vh;
+                    height: 80vh;
                     overflow: auto;
                     background-color: rgba(black, 0.5);
                     border: 5px solid rgba($orange, 0.75);
                     border-style: solid double;
                     box-shadow: rgba($orange, 0.25) 0px 30px 60px -12px inset, rgba($orange, 0.3) 0px 18px 36px -18px inset;
+                    
+                    .close {
+                        border-radius: 25px;
+                        border: 5px solid rgba($orange, 0.75);
+                        font-size: 1.5rem;
+                        padding: 12px 16px;
+                    }
                 }
             }
 
