@@ -10,7 +10,8 @@ export function AppProvider({ children })
         hoverTime: 1,
         loading: true,
         focus: null,
-        information: null
+        information: null,
+        goToGlobalCam: false
     })
 
     return  <AppContext.Provider value={ app }>

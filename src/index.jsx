@@ -1,7 +1,7 @@
 import "./style.scss"
 import ReactDOM from "react-dom/client"
 import { Canvas } from "@react-three/fiber"
-import { camInitPos } from "./usefull/Camera"
+import { camInitPos, camInitRot } from "./usefull/Camera"
 
 // Context
 import { AppProvider } from "./context/AppContext"
@@ -24,7 +24,8 @@ root.render(
                 fov: 45,
                 near: 0.1,
                 far: 50,
-                position: [ camInitPos.x, camInitPos.y, camInitPos.z ]
+                position: [ camInitPos.x, camInitPos.y, camInitPos.z ],
+                rotation: [ camInitRot.x, camInitRot.y, camInitRot.z ]
             } }
         >
             <color args={ [ "#030202" ] } attach="background" />

@@ -12,15 +12,24 @@ export default function Riri(
 
     const moveFollower = (e) => {
         if (canMove === true) {
-            gsap.to(followerRef.current, {
-                top: e.clientY,
-                left: e.clientX,
-                duration: 0.6,
-                ease: "power3"
-            }, 0)
+            if (e.type === "mousemove") {
+                gsap.to(followerRef.current, {
+                    top: e.clientY,
+                    left: e.clientX,
+                    duration: 0.6,
+                    ease: "power3"
+                }, 0)
+            } else if (e.type === "touchmove") {
+                gsap.to(followerRef.current, {
+                    top: e.touches[0].clientY,
+                    left: e.touches[0].clientX,
+                    duration: 0.6,
+                    ease: "power3"
+                }, 0)
+            }
         }
     }
-
+    
     useEffect(() => {
             gsap.to(followerRef.current, {
                 width: "30px",
@@ -50,6 +59,7 @@ export default function Riri(
 
         document.addEventListener("mousemove", moveFollower)
         document.addEventListener("click", nextChat)
+        document.addEventListener("touchmove", moveFollower)
     }, [canMove])
 
     return  <div id="riri" ref={ followerRef } >

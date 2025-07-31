@@ -1,6 +1,7 @@
 import { gsap } from "gsap"
 
 export const camInitPos = { x: 6, y: 1, z: 12 }
+export const camInitRot = { x: -0.08, y: 0.46, z: 0.04 }
 
 export function camGoesTo(camera, pos = { x: 6, y: 1, z: 12 }, rot = null)
 {

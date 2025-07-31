@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react"
 import { AppContext, AppSetterContext } from "../context/AppContext"
 
 // React Components
+import EscapeButton from "./EscapeButton"
 import Riri from "./Riri"
 import Chat from "./Chat"
 import Presentation from "./Presentation"
@@ -70,7 +71,11 @@ export default function HtmlExperience()
     const nextChat = (e) => {
         if (nextAction) {
             if (i < max) {
-                if (e.type === "keydown" && e.key === "Enter") {
+                if (
+                    e.type === "keydown" && e.key === "Enter"
+                    ||
+                    e.type === "click" && e.target.className === "next"
+                ) {
                     if (i !== 8) {
                         i++
                         setChat(data[i].text)
@@ -96,8 +101,9 @@ export default function HtmlExperience()
 
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
-                    {/* <Riri canMove={ canMove } nextChat={ nextChat } /> */}
-                    {/* { loading ? (<Presentation chat={ chat } timeChat={ timeChat } nextChat={ nextChat } />) : null } */}
+                    <EscapeButton />
+                    <Riri canMove={ canMove } nextChat={ nextChat } />
+                    { loading ? (<Presentation chat={ chat } timeChat={ timeChat } nextChat={ nextChat } />) : null }
                     {/* Bar */}
                     { information === "bartender-experiences" ? <BarExperiences /> : null }
                     { information === "bartender-receipes" ? <Receipes /> : null }
