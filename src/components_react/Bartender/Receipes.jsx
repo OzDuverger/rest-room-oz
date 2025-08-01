@@ -1,7 +1,10 @@
-import { useContext } from "react"
+import { useContext, use } from "react"
 
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
+
+// Text
+import receipes from "../../texts/receipes.json"
 
 export default function Receipes()
 {
@@ -15,10 +18,32 @@ export default function Receipes()
         }
     }
 
-    return  <section id="bar-experiences">
-                <div className="experiences container">
-                    <div className="close" onClick={ close }>X</div>
-                    RECEIPES
+    return  <section id="receipes">
+                <div className="background-section container">
+                    <div className="close">
+                        <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
+                    </div>
+                    <div className="illustrated-work">
+                        <div className="caroussel">
+                        { receipes.map((receipe) => {
+                            return (
+                                <div className="slide">
+                                    <img src={ receipe.img } alt="cocktail-img" />
+                                </div>
+                            )
+                        }) }
+                        </div>
+                        <div className="descriptions">
+                        { receipes.map((receipe) => {
+                            return (
+                                <div className="element">
+                                    <div className="title">{ receipe.title }</div>
+                                    <div className="desc">{ receipe.description }</div>
+                                </div>
+                            )
+                        }) }
+                        </div>
+                    </div>
                 </div>
             </section>
 }
