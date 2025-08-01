@@ -27,6 +27,10 @@ export default function Table()
 
     useEffect(() => {
         setLoading(app.loading)
+        // DEBUG !!!
+        // console.log(coffeeSmokeVertexShader)
+        // console.log(coffeeSmokeFragmentShader)
+        // DEBUG !!!
     }, [app.loading])
 
     // Get app context setter
@@ -45,6 +49,9 @@ export default function Table()
     // Smoke Material
     const smokeMaterial = useRef()
     useFrame((state, delta) => {
+        // DEBUG !!!
+        // console.log("coucou : " + smokeMaterial.current.uniforms.uTime.value)
+        // DEBUG !!!
         smokeMaterial.current.uniforms.uTime.value += delta
     })
 

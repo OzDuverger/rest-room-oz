@@ -26,7 +26,7 @@ export default function BarExperiences()
                     <div className="experience">
                         { experiences.map((exp) => {
                             return (
-                                <div className="exp">
+                                <div key={ exp.id } className="exp">
                                     <div className="left">
                                         <div className="job">{ exp.job }</div>
                                         <div className="dates">{ exp.dates }</div>

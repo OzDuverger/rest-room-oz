@@ -3,7 +3,7 @@
         "id" : 0,
         "title" : "Elixir of patience",
         "description" : "white rum / brown rum / apple / vanilla",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/pancktail.jpg"
     },
     {
         "id" : 1,
@@ -15,7 +15,7 @@
         "id" : 2,
         "title" : "Cloaking spell",
         "description" : "vodka / cranberry / apple / lime / cassis / glitters",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/pancktail.jpg"
     },
     {
         "id" : 3,
@@ -27,7 +27,7 @@
         "id" : 4,
         "title" : "Barbie",
         "description" : "red berries / leetchi / cranberry / lime / sparkling water / glitters",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/pancktail.jpg"
     },
     {
         "id" : 5,
@@ -39,7 +39,7 @@
         "id" : 6,
         "title" : "Geraldine",
         "description" : "mimosa / sparkling water / lime",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/pancktail.jpg"
     },
     {
         "id" : 7,

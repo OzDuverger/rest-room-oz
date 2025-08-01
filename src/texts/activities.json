@@ -9,7 +9,7 @@
         "id" : 1,
         "title" : "Insider like a larp",
         "description" : "Summer camp game : A mix between Insider game and cold warm",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/pancktail.jpg"
     },
     {
         "id" : 2,
@@ -21,6 +21,6 @@
         "id" : 3,
         "title" : "Hissez-Haut !",
         "description" : "A resource management game created in cooperation with a friend",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/pancktail.jpg"
     }
 ]
