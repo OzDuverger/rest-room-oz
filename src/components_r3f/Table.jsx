@@ -70,10 +70,19 @@ export default function Table()
     }
 
     const eventOnClick = (event) => {
-        const pos = {
+        let pos = {
             x: 2.45,
             y: -1.95,
             z: 2.25
+        }
+
+        //Mobile 
+        if (app.mobile) {
+            pos = {
+                x: 2.68,
+                y: -1.95,
+                z: 2.4
+            }
         }
         camGoesTo(camera, pos)
         setApp({...app, focus: FOCUS})

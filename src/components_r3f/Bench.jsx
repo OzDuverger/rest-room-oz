@@ -53,10 +53,19 @@ export default function Bench()
     }
         // Click
     const groupOnClick = () => {
-        const pos = {
+        let pos = {
             x: 1.75,
             y: -1.45,
             z: 0.5
+        }
+
+        // Mobile
+        if (app.mobile) {
+            pos = {
+                x: 1.4,
+                y: -1.45,
+                z: 1.7
+            }
         }
         const rot = {
             x: 0,

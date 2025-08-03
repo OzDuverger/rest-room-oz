@@ -5,7 +5,7 @@ import { useThree } from "@react-three/fiber"
 import { AppContext, AppSetterContext } from "../context/AppContext"
 
 // Usefull
-import { camInitPos, camInitRot, camGoesTo } from "../usefull/Camera"
+import { camInitPos, camInitPosMobile, camInitRot, camGoesTo } from "../usefull/Camera"
 
 export default function Return()
 {
@@ -30,7 +30,11 @@ export default function Return()
     // Keyboard event
     const goBackGlobal = (e) => {
         if (e.key === "Escape" && app.information === null) {
-            camGoesTo(camera, camInitPos, camInitRot)
+            if (app.mobile) {
+                camGoesTo(camera, camInitPosMobile, camInitRot)
+            } else {
+                camGoesTo(camera, camInitPos, camInitRot)
+            }
             setApp({...app, focus: null, goToGlobalCam: false})
         }
     }

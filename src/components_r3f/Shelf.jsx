@@ -66,10 +66,19 @@ export default function Shelf()
 
         // Click
     const groupOnClick = (event) => {
-        const pos = {
+        let pos = {
             x: 1.75,
             y: -1.15,
             z: 0
+        }
+
+        // Mobile
+        if (app.mobile) {
+            pos = {
+                x: 2.25,
+                y: -1.15,
+                z: 0.3
+            }
         }
         const rot = {
             x: -0.05,

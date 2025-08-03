@@ -12,7 +12,9 @@ export function AppProvider({ children })
         focus: null,
         information: null,
         goToGlobalCam: false,
-        presentation: 0
+        presentation: 0,
+        // Mobile == screen < 450px
+        mobile: false
     })
 
     return  <AppContext.Provider value={ app }>

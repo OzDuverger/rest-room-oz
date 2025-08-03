@@ -53,10 +53,19 @@ export default function Games()
     }
         // Click
     const groupOnClick = () => {
-        const pos = {
+        let pos = {
             x: -0.25,
             y: -2.5,
             z: 0.75
+        }
+
+        // Mobile
+        if (app.mobile) {
+            pos = {
+                x: -0.25,
+                y: -2.5,
+                z: 1.3
+            }
         }
         camGoesTo(camera, pos)
         if (app.focus === null) {

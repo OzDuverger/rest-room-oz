@@ -53,10 +53,20 @@ export default function Barrel()
     }
         // Click
     const groupOnClick = (event) => {
-        const pos = {
+
+        let pos = {
             x: -0.15,
             y: -1.2,
             z: 2.25
+        }
+
+        // Mobile
+        if (app.mobile) {
+            pos = {
+                x: -0.15,
+                y: -1.2,
+                z: 2.65
+            }
         }
         const rot = {
             x: -0.05,

@@ -20,9 +20,6 @@ export default function Presentation()
     const max = data.length - 1
 
     const nextChat = (e) => {
-        // DEBUG !!!
-        // console.log("nextchat called + app.nextAction : " + app.nextAction + " / e.type : " + e.type + " / e.key : " + e.key)
-        // DEBUG !!!
         if (app.nextAction && (
             e.type === "keydown" && e.key === "Enter"
             ||
@@ -36,9 +33,6 @@ export default function Presentation()
     }
 
     useEffect(() => {
-        // DEBUG !!!
-        // console.log("useEffect presentation called")
-        // DEBUG !!!
         if (app.presentation < max) {
             speaking(chatRef.current, data[app.presentation].time, data[app.presentation].text)
         } else {
@@ -47,9 +41,6 @@ export default function Presentation()
     }, [app.presentation])
 
     useEffect(() => {
-        // DEBUG !!!
-        // console.log("useEffect next Action called + app.nextAction : " + app.nextAction)
-        // DEBUG !!!
             document.addEventListener("keydown", nextChat, true)
         if (!app.nextAction) {
             document.removeEventListener("keydown", nextChat, true)

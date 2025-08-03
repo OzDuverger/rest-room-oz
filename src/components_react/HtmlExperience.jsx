@@ -24,9 +24,6 @@ import KnitAndHook from "./Craft/KnitAndHook"
 import Furniture from "./Craft/Furniture"
 import Clothes from "./Craft/Clothes"
 
-// Texts
-import data from "../texts/presentation.json"
-
 export default function HtmlExperience()
 {
     // Ambient Sound part
@@ -35,8 +32,12 @@ export default function HtmlExperience()
         AmbientAudio.loop = true
         AmbientAudio.volume = 0.25
         AmbientAudio.play()
+
+        if (window.screen.window <= 450) {
+            setApp({...app, mobile: true})
+        }
         // DEBUG !!!
-        // setApp({...app, loading: false})
+        setApp({...app, loading: false})
         // DEBUG !!!
     }, [])
     
@@ -61,8 +62,8 @@ export default function HtmlExperience()
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <EscapeButton />
-                    <Riri />
-                    { loading ? (<Presentation />) : null }
+                    {/* <Riri />
+                    { loading ? (<Presentation />) : null }*/}
                     {/* Bar */}
                     { information === "bartender-experiences" ? <BarExperiences /> : null }
                     { information === "bartender-receipes" ? <Receipes /> : null }
