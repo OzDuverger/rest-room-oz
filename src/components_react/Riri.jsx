@@ -1,15 +1,20 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState, useContext } from "react"
 import { gsap, Sine } from "gsap"
 
-export default function Riri(
-    {
-        canMove,
-        nextChat
-    }
-)
+// Context
+import { AppContext, AppSetterContext } from "../context/AppContext"
+
+export default function Riri()
 {
+    // Get app context
+    const setApp = useContext(AppSetterContext)
+    const app = useContext(AppContext)
+
     const followerRef = useRef(null)
 
+    const [canMove, setCanMove] = useState(false)
+
+    // Riri follows you
     const moveFollower = (e) => {
         if (canMove === true) {
             if (e.type === "mousemove") {
@@ -30,6 +35,7 @@ export default function Riri(
         }
     }
     
+    // Riri's dance
     useEffect(() => {
             gsap.to(followerRef.current, {
                 width: "30px",
@@ -55,10 +61,31 @@ export default function Riri(
             }).progress(0.5)
     }, [])
 
+    const nextChat = (e) => {
+        document.removeEventListener("click", nextChat, true)
+        if (app.nextAction && (
+            e.type === "click"
+            &&
+            e.target.id === "riri"
+        )) {
+            if (app.presentation === 8) {
+                setApp({...app, presentation: (app.presentation + 1), nextAction: false})
+                setCanMove(true)
+            }
+        }
+    }
+    
+    useEffect(() => {
+        if (app.nextAction) {
+            document.addEventListener("click", nextChat, true)
+        } else {
+            document.removeEventListener("click", nextChat, true)
+        }
+    }, [app.nextAction])
+
     useEffect(() => {
 
         document.addEventListener("mousemove", moveFollower)
-        document.addEventListener("click", nextChat)
         document.addEventListener("touchmove", moveFollower)
     }, [canMove])
 

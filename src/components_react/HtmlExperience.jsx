@@ -36,16 +36,16 @@ export default function HtmlExperience()
         AmbientAudio.volume = 0.25
         AmbientAudio.play()
         // DEBUG !!!
-        setApp({...app, loading: false})
+        // setApp({...app, loading: false})
         // DEBUG !!!
     }, [])
     
-    // Get app context setter
+    // Get app context
     const setApp = useContext(AppSetterContext)
+    const app = useContext(AppContext)
 
     // Loading
     const [loading, setLoading] = useState(true)
-    const app = useContext(AppContext)
 
     // Informations
     const [information, setInformation] = useState(null)
@@ -58,52 +58,11 @@ export default function HtmlExperience()
         setLoading(app.loading)
     }, [app.loading])
 
-    // Presentation
-        // Index
-    let i = 0
-    let nextAction = true
-    const max = data.length - 1
-
-    const [chat, setChat] = useState(data[i].text)
-    const [timeChat, setTimeChat] = useState(data[i].time)
-    const [canMove, setCanMove] = useState(false)
-
-    const nextChat = (e) => {
-        if (nextAction) {
-            if (i < max) {
-                if (
-                    e.type === "keydown" && e.key === "Enter"
-                    ||
-                    e.type === "click" && e.target.className === "next"
-                ) {
-                    if (i !== 8) {
-                        i++
-                        setChat(data[i].text)
-                        setTimeChat(data[i].time)
-                        nextAction = false
-                        setTimeout(() => { nextAction = true }, data[i].time * 1000)
-                    }
-                } else if (e.type === "click" && e.target.id === "riri") {
-                    if (i === 8) {
-                        i++
-                        setCanMove(true)
-                        setChat(data[i].text)
-                        setTimeChat(data[i].time)
-                        nextAction = false
-                        setTimeout(() => { nextAction = true }, data[i].time * 1000)
-                    }
-                }
-            } else {
-                setApp({...app, loading: false})
-            }
-        }
-    }
-
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <EscapeButton />
-                    {/* <Riri canMove={ canMove } nextChat={ nextChat } />
-                    { loading ? (<Presentation chat={ chat } timeChat={ timeChat } nextChat={ nextChat } />) : null } */}
+                    <Riri />
+                    { loading ? (<Presentation />) : null }
                     {/* Bar */}
                     { information === "bartender-experiences" ? <BarExperiences /> : null }
                     { information === "bartender-receipes" ? <Receipes /> : null }

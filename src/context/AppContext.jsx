@@ -11,7 +11,8 @@ export function AppProvider({ children })
         loading: true,
         focus: null,
         information: null,
-        goToGlobalCam: false
+        goToGlobalCam: false,
+        presentation: 0
     })
 
     return  <AppContext.Provider value={ app }>
