@@ -37,7 +37,7 @@ export default function HtmlExperience()
             setApp({...app, mobile: true})
         }
         // DEBUG !!!
-        setApp({...app, loading: false})
+        // setApp({...app, loading: false})
         // DEBUG !!!
     }, [])
     
@@ -62,8 +62,8 @@ export default function HtmlExperience()
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <EscapeButton />
-                    {/* <Riri />
-                    { loading ? (<Presentation />) : null }*/}
+                    <Riri />
+                    { loading ? (<Presentation />) : null }
                     {/* Bar */}
                     { information === "bartender-experiences" ? <BarExperiences /> : null }
                     { information === "bartender-receipes" ? <Receipes /> : null }
