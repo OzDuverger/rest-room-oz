@@ -15,9 +15,11 @@ export default function Music()
         }
     }
 
-    return  <section id="bar-experiences">
-                <div className="experiences container">
-                    <div className="close" onClick={ close }>X</div>
+    return  <section id="music">
+                <div className="background-section container">
+                    <div className="close">
+                        <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
+                    </div>
                     Music
                 </div>
             </section>

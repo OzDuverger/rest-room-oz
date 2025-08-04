@@ -14,11 +14,17 @@ $black: #030202;
 }
 
 html {
-    font-size: 15px;
     color: $white;
     // DEBUG !!!
     background-color: ivory;
     // DEBUG !!!
+    font-family: "Sigmar One", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    font-style: normal;
+    @media  screen and (max-width: 450px) {
+        font-size: 12px;
+    }
 
     * {
         box-sizing: border-box;
@@ -45,7 +51,7 @@ html {
         input {
             outline: none;
             border: none;
-            font-family: "Geomanist", sans-serif;
+            font-family: "Sigmar One", sans-serif;
         }
     
         select {
@@ -162,20 +168,33 @@ html {
             .experience {
                 width: 100%;
                 height: 80%;
+                overflow-x: hidden;
                 @include flex($direction: column, $justify: space-around);
 
+                @media screen and (max-width: 1100px) {
+                    height: 100%;
+                }
+                
                 .exp {
                     width: 100%;
                     @include flex();
+                    @media  screen and (max-width: 450px) {
+                        @include flex($direction: column);
+                    }
 
                     .left {
                         width: 50%;
                         border-right: 1px solid rgba($orange, 0.75);
                         @include flex($direction: column);
+                        @media  screen and (max-width: 450px) {
+                            border-right: unset;
+                            border-bottom: 1px solid rgba($orange, 0.75);
+                        }
                     
                         .job, .dates {
                             width: 100%;
                             padding: 5px 20px;
+                            text-align: center;
                             @include flex($justify: flex-end);
                         }
 
@@ -270,7 +289,18 @@ html {
 
             #bar-experiences,
             #animator-experiences,
-            #receipes {
+            #receipes,
+            #bar-contact,
+            #clothes,
+            #furniture,
+            #knit-and-hook,
+            #animator-contact,
+            #board-games,
+            #juggling,
+            #theatre,
+            #sport,
+            #music,
+            #languages {
                 position: fixed;
                 z-index: 42;
                 left: 0;
@@ -323,6 +353,5 @@ html {
                 }
             }
         }
-
     }
 }

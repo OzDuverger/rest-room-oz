@@ -15,9 +15,11 @@ export default function BarContact()
         }
     }
 
-    return  <section id="bar-experiences">
-                <div className="experiences container">
-                    <div className="close" onClick={ close }>X</div>
+    return  <section id="bar-contact">
+                <div className="background-section container">
+                    <div className="close">
+                        <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
+                    </div>
                     CONTACT
                 </div>
             </section>

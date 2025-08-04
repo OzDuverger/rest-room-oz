@@ -15,9 +15,11 @@ export default function Theatre()
         }
     }
 
-    return  <section id="bar-experiences">
-                <div className="experiences container">
-                    <div className="close" onClick={ close }>X</div>
+    return  <section id="theatre">
+                <div className="background-section container">
+                    <div className="close">
+                        <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
+                    </div>
                     Theatre
                 </div>
             </section>

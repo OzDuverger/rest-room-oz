@@ -53,9 +53,6 @@ export default function Barrel()
     }
         // Click
     const groupOnClick = (event) => {
-        // DEBUG !!!
-        console.log("app.mobile : " + app.mobile)
-        // DEBUG !!!
         let pos = {
             x: -0.15,
             y: -1.2,
