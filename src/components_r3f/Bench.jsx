@@ -73,7 +73,10 @@ export default function Bench()
         }
         camGoesTo(camera, pos, rot)
         if (app.focus === null) {
-            setApp({...app, focus: FOCUS })
+            setApp({...app, focus: FOCUS, camMoves: true})
+            setTimeout(() => {
+                setApp({...app, focus: FOCUS, camMoves: false})
+            }, 2000)
         }
     }
 

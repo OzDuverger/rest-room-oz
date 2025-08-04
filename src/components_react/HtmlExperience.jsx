@@ -33,8 +33,11 @@ export default function HtmlExperience()
         AmbientAudio.volume = 0.25
         AmbientAudio.play()
 
-        if (window.screen.window <= 450) {
+        if (window.screen.width <= 450) {
             setApp({...app, mobile: true})
+            // DEBUG !!!
+            // setApp({...app, mobile: true, loading: false})
+            // DEBUG !!!
         }
         // DEBUG !!!
         // setApp({...app, loading: false})

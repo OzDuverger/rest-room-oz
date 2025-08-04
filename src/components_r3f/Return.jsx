@@ -22,8 +22,15 @@ export default function Return()
     
     useEffect(() => {
         if (app.goToGlobalCam === true && app.information === null) {
-            camGoesTo(camera, camInitPos, camInitRot)
-            setApp({...app, focus: null, goToGlobalCam: false})
+            if (app.mobile) {
+                camGoesTo(camera, camInitPosMobile, camInitRot)
+            } else {
+                camGoesTo(camera, camInitPos, camInitRot)
+            }
+            setApp({...app, focus: null, goToGlobalCam: false, camMoves: true})
+            setTimeout(() => {
+                setApp({...app, focus: null, goToGlobalCam: false, camMoves: false})
+            }, 2000)
         }
     }, [app.goToGlobalCam])
 
@@ -35,7 +42,10 @@ export default function Return()
             } else {
                 camGoesTo(camera, camInitPos, camInitRot)
             }
-            setApp({...app, focus: null, goToGlobalCam: false})
+            setApp({...app, focus: null, goToGlobalCam: false, camMoves: true})
+            setTimeout(() => {
+                setApp({...app, focus: null, goToGlobalCam: false, camMoves: false})
+            }, 2000)
         }
     }
 

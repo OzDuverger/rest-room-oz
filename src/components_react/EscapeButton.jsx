@@ -9,25 +9,29 @@ export default function EscapeButton()
     const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
 
-    const [isOnGlobalCam, setIsOnGlobalCam] = useState(true)
+    const [showEscBtn, setShowEscBtn] = useState(false)
 
     useEffect(() => {
-        if (app.focus === null) {
-            setIsOnGlobalCam(true)
-        } else {
-            if (app.information === null) {
-                setIsOnGlobalCam(false)
+        if (!app.camMoves) {
+            if (app.focus === null) {
+                setShowEscBtn(false)
             } else {
-                setIsOnGlobalCam(true)
+                if (app.information === null) {
+                    setShowEscBtn(true)
+                } else {
+                    setShowEscBtn(false)
+                }
             }
+        } else {
+            setShowEscBtn(false)
         }
-    }, [app.focus, app.information])
+    }, [app.camMoves, app.information])
 
     const goBackToGlobalCam = () => {
         setApp({...app, goToGlobalCam: true})
     }
 
     return  <>
-                { isOnGlobalCam === false ? (<img onClick={ goBackToGlobalCam } className="escape-button" src="/svg/esc-button.svg" alt="escape-button" />) : <></> }
+                { showEscBtn ? (<img onClick={ goBackToGlobalCam } className="escape-button" src="/svg/esc-button.svg" alt="escape-button" />) : <></> }
             </>
 }

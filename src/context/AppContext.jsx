@@ -12,6 +12,7 @@ export function AppProvider({ children })
         focus: null,
         information: null,
         goToGlobalCam: false,
+        camMoves: false,
         presentation: 0,
         // Mobile == screen < 450px
         mobile: false

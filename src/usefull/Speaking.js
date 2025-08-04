@@ -34,8 +34,3 @@ export function speaking(ref, timeChat, chat)
         text: chat
     }, 0.1)
 }
-
-export function nextChat()
-{
-    
-}

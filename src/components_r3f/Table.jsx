@@ -85,7 +85,10 @@ export default function Table()
             }
         }
         camGoesTo(camera, pos)
-        setApp({...app, focus: FOCUS})
+        setApp({...app, focus: FOCUS, camMoves: true})
+        setTimeout(() => {
+            setApp({...app, focus: FOCUS, camMoves: false})
+        }, 2000)
     }
 
     return  <group  onPointerEnter={ groupPointerEnter }

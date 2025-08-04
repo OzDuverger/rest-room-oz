@@ -27,7 +27,11 @@ export default function Presentation()
         )) {
             document.removeEventListener("keydown", nextChat, true)
             if (app.presentation !== 8) {
-                setApp({...app, presentation: (app.presentation + 1), nextAction: false})
+                if (window.screen.width <= 450) {
+                    setApp({...app, presentation: (app.presentation + 1), nextAction: false, mobile: true})
+                } else {
+                    setApp({...app, presentation: (app.presentation + 1), nextAction: false, mobile: false})
+                }
             }
         }
     }
@@ -53,6 +57,6 @@ export default function Presentation()
 
     return  <section id="presentation">
                 <div className="chat" ref={ chatRef }></div>
-                <div className="next">Press Enter</div>
+                <div onClick={ nextChat } className="next">Press Enter</div>
             </section>
 }

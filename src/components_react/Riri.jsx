@@ -38,8 +38,8 @@ export default function Riri()
     // Riri's dance
     useEffect(() => {
             gsap.to(followerRef.current, {
-                width: "30px",
-                height: "30px",
+                width: "40px",
+                height: "40px",
                 duration: 1.5,
                 ease: "power1.in",
                 repeat: -1,
@@ -89,6 +89,6 @@ export default function Riri()
         document.addEventListener("touchmove", moveFollower)
     }, [canMove])
 
-    return  <div id="riri" ref={ followerRef } >
+    return  <div id="riri" ref={ followerRef } onClick={ nextChat }>
             </div>
 }

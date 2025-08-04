@@ -53,7 +53,9 @@ export default function Barrel()
     }
         // Click
     const groupOnClick = (event) => {
-
+        // DEBUG !!!
+        console.log("app.mobile : " + app.mobile)
+        // DEBUG !!!
         let pos = {
             x: -0.15,
             y: -1.2,
@@ -75,7 +77,10 @@ export default function Barrel()
         }
         camGoesTo(camera, pos, rot)
         if (app.focus === null) {
-            setApp({...app, focus: FOCUS})
+            setApp({...app, focus: FOCUS, camMoves: true})
+            setTimeout(() => {
+                setApp({...app, focus: FOCUS, camMoves: false})
+            }, 2000)
         }
     }
     

@@ -69,7 +69,10 @@ export default function Games()
         }
         camGoesTo(camera, pos)
         if (app.focus === null) {
-            setApp({...app, focus: FOCUS })
+            setApp({...app, focus: FOCUS, camMoves: true})
+            setTimeout(() => {
+                setApp({...app, focus: FOCUS, camMoves: false})
+            }, 2000)
         }
     }
 
