@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react"
+import { gsap } from "gsap"
 
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
@@ -22,6 +23,44 @@ export default function Receipes()
     useEffect(() => {
         getElement()
     }, [currentId])
+
+    useEffect(() => {
+        const carouselMap = Array.from(carousel.current.children)
+        const elementsMap = Array.from(elements.current.children)
+
+        const tl1 = gsap.timeline()
+        const tl2 = gsap.timeline()
+
+        elementsMap.map((el) => {
+            tl1.fromTo(el, {
+                    x: "-50px",
+                    opacity: 0,
+                    ease: "elastic"
+                }, {
+                    x: "50px",
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: "elastic"
+                }
+            )
+        })
+        
+        carouselMap.map((el) => {
+            if (el.classList.contains("active")) {
+                tl2.fromTo(el, {
+                        x: "-50px",
+                        opacity: 0,
+                        ease: "elastic"
+                    }, {
+                        x: "50px",
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: "elastic"
+                    }
+                )
+            }
+        })
+    }, [])
 
     const close = (event) => {
         if (app.focus === "Barrel") {
