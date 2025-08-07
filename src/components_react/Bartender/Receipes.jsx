@@ -69,21 +69,50 @@ export default function Receipes()
     }
 
     const getElement = () => {
-        const carouselMap = Array.from(carousel.current.children)
-        carouselMap.map((child, index) => {
-            if (index === currentId) {
-                child.classList.add("active")
-            } else {
-                child.classList.remove("active")
-            }
-        })
+        getImage()
 
         const elementsMap = Array.from(elements.current.children)
         elementsMap.map((child, index) => {
             if (index === currentId) {
                 child.classList.add("active")
+                child.firstChild.classList.add("active")
             } else {
                 child.classList.remove("active")
+                child.firstChild.classList.remove("active")
+            }
+        })
+    }
+
+    const getImage = () => {
+
+        const carouselMap = Array.from(carousel.current.children)
+        carouselMap.map((child, index) => {
+            if (index === currentId) {
+                child.classList.add("active")
+                gsap.fromTo(child, {
+                        x: "-50px",
+                        opacity: 0,
+                        ease: "elastic"
+                    }, {
+                        x: "50px",
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: "elastic"
+                    }
+                )
+            } else {
+                if (child.classList.contains("active")) {
+                    child.classList.remove("active")
+                    gsap.fromTo(child, {
+                            x: "50px",
+                            opacity: 1
+                        }, {
+                            x: "-50px",
+                            opacity: 0,
+                            duration: .5
+                        }
+                    )
+                }
             }
         })
     }

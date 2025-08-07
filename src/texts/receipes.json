@@ -3,7 +3,7 @@
         "id" : 0,
         "title" : "Elixir of patience",
         "description" : "white rum / brown rum / apple / vanilla",
-        "img" : "/img/pancktail.jpg"
+        "img" : "/img/default-cocktail.jpg"
     },
     {
         "id" : 1,
@@ -15,7 +15,7 @@
         "id" : 2,
         "title" : "Cloaking spell",
         "description" : "vodka / cranberry / apple / lime / cassis / glitters",
-        "img" : "/img/pancktail.jpg"
+        "img" : "/img/cloaking-spell.jpg"
     },
     {
         "id" : 3,
@@ -27,7 +27,7 @@
         "id" : 4,
         "title" : "Barbie",
         "description" : "red berries / leetchi / cranberry / lime / sparkling water / glitters",
-        "img" : "/img/pancktail.jpg"
+        "img" : "/img/barbie-cocktail.jpg"
     },
     {
         "id" : 5,
@@ -39,12 +39,24 @@
         "id" : 6,
         "title" : "Geraldine",
         "description" : "mimosa / sparkling water / lime",
-        "img" : "/img/pancktail.jpg"
+        "img" : "/img/default-cocktail.jpg"
     },
     {
         "id" : 7,
         "title" : "Gigi's Madness",
         "description" : "gin / mimosa / sparkling water / lime",
         "img" : "/img/default-cocktail.jpg"
+    },
+    {
+        "id" : 8,
+        "title" : "Poison lama",
+        "description" : "vodka / cassis / water / lime / glitters",
+        "img" : "/img/lama-poison.jpg"
+    },
+    {
+        "id" : 9,
+        "title" : "Pancktail",
+        "description" : "vodka or gin / apricot / raspberry / curacao / glitters",
+        "img" : "/img/pancktail.jpg"
     }
 ]

@@ -244,7 +244,6 @@ html {
                         position: absolute;
                         opacity: 0;
                         height: 100%;
-                        transition: opacity .5s ease-in-out;
 
                         img {
                             width: 100%;
@@ -291,7 +290,7 @@ html {
                     }
 
                     .active {
-                        background-color: rebeccapurple;
+                        background-color: rgba($orange, 0.5);
                     }
                 }
             }
