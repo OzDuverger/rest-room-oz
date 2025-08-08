@@ -44,6 +44,8 @@ export default function BarContact()
         }
     }
 
+    // TO-DO: MAKE IT COMPONENT
+
     return  <section id="bar-contact">
                 <div className="background-section container">
                     <div className="close">
