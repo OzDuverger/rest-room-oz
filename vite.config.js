@@ -1,47 +1,61 @@
 import react from "@vitejs/plugin-react"
-import { transformWithEsbuild } from "vite"
+import { defineConfig, loadEnv, transformWithEsbuild } from "vite"
 import restart from "vite-plugin-restart"
 import glsl from "vite-plugin-glsl"
 
-export default {
-    root: "src/",
-    publicDir: "../public/",
-    base: "./",
-    plugins:
-    [
-        // Restart server on static/public file change
-        restart({ restart: [ "../public/**", ] }),
+export default defineConfig(({ mode }) => {
 
-        // React support
-        react(),
+    const env = loadEnv(mode, process.cwd(), '')
 
-        // GLSL support
-        glsl(),
-
-        // .js file support as if it was JSX
-        {
-            name: "load+transform-js-files-as-jsx",
-            async transform(code, id)
-            {
-                if (!id.match(/src\/.*\.js$/))
-                    return null
-
-                return transformWithEsbuild(code, id, {
-                    loader: "jsx",
-                    jsx: "automatic",
-                });
-            },
+    return {
+        root: "src/",
+        publicDir: "../public/",
+        base: "./",
+        define: {
+            "VITE_EMAILJS_SERVICE_ID": JSON.stringify(env.VITE_EMAILJS_SERVICE_ID),
+            "VITE_EMAILJS_TEMPLATE_BARTENDER_ID": JSON.stringify(env.VITE_EMAILJS_TEMPLATE_BARTENDER_ID),
+            "VITE_EMAILJS_TEMPLATE_GAME_MASTER_ID": JSON.stringify(env.VITE_EMAILJS_TEMPLATE_GAME_MASTER_ID),
+            "VITE_EMAILJS_PUBLIC_KEY": JSON.stringify(env.VITE_EMAILJS_PUBLIC_KEY)
         },
-    ],
-    server:
-    {
-        host: true, // Open to local network and display URL
-        open: !("SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env) // Open if it"s not a CodeSandbox
-    },
-    build:
-    {
-        outDir: "../dist", // Output in the dist/ folder
-        emptyOutDir: true, // Empty the folder first
-        sourcemap: true // Add sourcemap
-    },
-}
+        plugins:
+        [
+            // Restart server on static/public file change
+            restart({ restart: [ "../public/**", ] }),
+
+            // React support
+            react(),
+
+            // GLSL support
+            glsl(),
+
+            // .js file support as if it was JSX
+            {
+                name: "load+transform-js-files-as-jsx",
+                async transform(code, id)
+                {
+                    if (!id.match(/src\/.*\.js$/))
+                        return null
+
+                    return transformWithEsbuild(code, id, {
+                        loader: "jsx",
+                        jsx: "automatic",
+                    });
+                },
+            },
+        ],
+        server:
+        {
+            host: true, // Open to local network and display URL
+            open: !("SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env) // Open if it"s not a CodeSandbox
+        },
+        build:
+        {
+            outDir: "../dist", // Output in the dist/ folder
+            emptyOutDir: true, // Empty the folder first
+            sourcemap: true // Add sourcemap
+        }
+    }
+})
+
+// export default {,
+// }
