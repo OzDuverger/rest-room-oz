@@ -53,7 +53,7 @@ export default function Shelf()
     }
 
     const bottomLeftBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Sport")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Sports")
     }
 
     const bottomRightBooksPointerEnter = (event) => {

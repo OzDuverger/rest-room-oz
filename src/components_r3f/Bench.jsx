@@ -37,15 +37,15 @@ export default function Bench()
     }
     
     const hammerPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Knit and Hook")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Oz' knitting and hooking", 2)
     }
     
     const spannerPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Furniture")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Oz' furniture")
     }
     
     const screwPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Clothes")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Oz' clothes")
     }
 
     const onPointerLeave = (event) => {

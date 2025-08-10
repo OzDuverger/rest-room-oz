@@ -1,4 +1,5 @@
 import { useContext, useState, useRef, useEffect } from "react"
+import { gsap } from "gsap"
 
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
@@ -23,6 +24,44 @@ export default function Activities()
         getElement()
     }, [currentId])
 
+    useEffect(() => {
+        const carouselMap = Array.from(carousel.current.children)
+        const elementsMap = Array.from(elements.current.children)
+
+        const tl1 = gsap.timeline()
+        const tl2 = gsap.timeline()
+
+        elementsMap.map((el) => {
+            tl1.fromTo(el, {
+                    x: "-50px",
+                    opacity: 0,
+                    ease: "elastic"
+                }, {
+                    x: "50px",
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: "elastic"
+                }
+            )
+        })
+        
+        carouselMap.map((el) => {
+            if (el.classList.contains("active")) {
+                tl2.fromTo(el, {
+                        x: "-50px",
+                        opacity: 0,
+                        ease: "elastic"
+                    }, {
+                        x: "50px",
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: "elastic"
+                    }
+                )
+            }
+        })
+    }, [])
+
     const close = (event) => {
         if (app.focus === "Games") {
             setApp({...app, information: null})
@@ -30,21 +69,50 @@ export default function Activities()
     }
 
     const getElement = () => {
-        const carouselMap = Array.from(carousel.current.children)
-        carouselMap.map((child, index) => {
-            if (index === currentId) {
-                child.classList.add("active")
-            } else {
-                child.classList.remove("active")
-            }
-        })
+        getImage()
 
         const elementsMap = Array.from(elements.current.children)
         elementsMap.map((child, index) => {
             if (index === currentId) {
                 child.classList.add("active")
+                child.firstChild.classList.add("active")
             } else {
                 child.classList.remove("active")
+                child.firstChild.classList.remove("active")
+            }
+        })
+    }
+
+    const getImage = () => {
+
+        const carouselMap = Array.from(carousel.current.children)
+        carouselMap.map((child, index) => {
+            if (index === currentId) {
+                child.classList.add("active")
+                gsap.fromTo(child, {
+                        x: "-50px",
+                        opacity: 0,
+                        ease: "elastic"
+                    }, {
+                        x: "50px",
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: "elastic"
+                    }
+                )
+            } else {
+                if (child.classList.contains("active")) {
+                    child.classList.remove("active")
+                    gsap.fromTo(child, {
+                            x: "50px",
+                            opacity: 1
+                        }, {
+                            x: "-50px",
+                            opacity: 0,
+                            duration: .5
+                        }
+                    )
+                }
             }
         })
     }

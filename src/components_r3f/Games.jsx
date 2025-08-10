@@ -37,15 +37,15 @@ export default function Games()
     }
 
     const cubeLeftPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Experiences")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Oz' experiences")
     }
 
     const cubeCenterPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Activities")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Oz' activities")
     }
 
     const cubesRightPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Contact")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Do you want to contact Oz ?", 2)
     }
 
     const onPointerLeave = (event) => {
