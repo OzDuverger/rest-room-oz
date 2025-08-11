@@ -3,6 +3,12 @@ import { useContext } from "react"
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
+// Text
+import sports from "../../texts/sports.json"
+
+// Components
+import Informations from "../usefull/Informations"
+
 export default function Sport()
 {
     // Get Context
@@ -20,7 +26,7 @@ export default function Sport()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
-                    Sport
+                    <Informations data={ sports } mobile={ app.mobile } />
                 </div>
             </section>
 }

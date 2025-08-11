@@ -3,6 +3,12 @@ import { useContext } from "react"
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
+// Text
+import juggling from "../../texts/juggling.json"
+
+// Components
+import Informations from "../usefull/Informations"
+
 export default function Juggling()
 {
     // Get Context
@@ -20,7 +26,7 @@ export default function Juggling()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
-                    Juggling
+                    <Informations data={ juggling } mobile={ app.mobile } />
                 </div>
             </section>
 }

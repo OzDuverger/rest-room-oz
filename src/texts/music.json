@@ -1,0 +1,17 @@
+[
+    {
+        "job" : "Piano",
+        "dates" : "Since childhood",
+        "roles" : [ "Classic", "Jazz", "Variety" ]
+    },
+    {
+        "job" : "Flute",
+        "dates" : "Since childhood",
+        "roles" : [ "Sopranino to Bass", "Baroque", "Celtic", "Improvisation" ]
+    },
+    {
+        "job" : "Guitar",
+        "dates" : "Beginner",
+        "roles" : [ "Basic chords" ]
+    }
+]

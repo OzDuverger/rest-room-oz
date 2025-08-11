@@ -45,7 +45,7 @@ export default function Shelf()
     }
 
     const centerLeftBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Board games")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Sports")
     }
 
     const centerRightBooksPointerEnter = (event) => {
@@ -53,7 +53,7 @@ export default function Shelf()
     }
 
     const bottomLeftBooksPointerEnter = (event) => {
-        eventOnPointerEnterHandler(app, FOCUS, setApp, "Sports")
+        eventOnPointerEnterHandler(app, FOCUS, setApp, "Board games")
     }
 
     const bottomRightBooksPointerEnter = (event) => {
@@ -113,13 +113,13 @@ export default function Shelf()
 
     const centerLeftBooksOnClick = (event) => {
         if (app.focus === FOCUS) {
-            setApp({...app, information: "hobbies-board-games"})
+            setApp({...app, information: "hobbies-sport"})
         }
     }
 
     const bottomLeftBooksOnClick = (event) => {
         if (app.focus === FOCUS) {
-            setApp({...app, information: "hobbies-sport"})
+            setApp({...app, information: "hobbies-board-games"})
         }
     }
 

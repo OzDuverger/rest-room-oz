@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 0,
+        "title" : "Torchman",
+        "description" : "Masterio's Mascot",
+        "img" : "/img/default-cocktail.jpg"
+    },
+    {
+        "id" : 1,
+        "title" : "Chicken wing",
+        "description" : "chicken wing with trans flag colors",
+        "img" : "/img/default-cocktail.jpg"
+    },
+    {
+        "id" : 2,
+        "title" : "Mood snake",
+        "description" : "Snake with a color by day and by mood",
+        "img" : "/img/default-cocktail.jpg"
+    }
+]

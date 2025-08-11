@@ -3,6 +3,12 @@ import { useContext } from "react"
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
+// Text
+import languages from "../../texts/languages.json"
+
+// Components
+import Informations from "../usefull/Informations"
+
 export default function Languages()
 {
     // Get Context
@@ -20,7 +26,7 @@ export default function Languages()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
-                    Languages
+                    <Informations data={ languages } mobile={ app.mobile } />
                 </div>
             </section>
 }

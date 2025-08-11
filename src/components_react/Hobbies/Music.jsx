@@ -3,6 +3,12 @@ import { useContext } from "react"
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
+// Text
+import music from "../../texts/music.json"
+
+// Components
+import Informations from "../usefull/Informations"
+
 export default function Music()
 {
     // Get Context
@@ -20,7 +26,7 @@ export default function Music()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
-                    Music
+                    <Informations data={ music } mobile={ app.mobile } />
                 </div>
             </section>
 }

@@ -1,0 +1,22 @@
+[
+    {
+        "job" : "Français",
+        "dates" : "Langue maternelle",
+        "roles" : [ "Compris", "Parle", "Ecrit" ]
+    },
+    {
+        "job" : "English",
+        "dates" : "Professional",
+        "roles" : [ "Understood", "Spoken", "Written" ]
+    },
+    {
+        "job" : "Deutsch",
+        "dates" : "Begriffe",
+        "roles" : [ "Verstanden" ]
+    },
+    {
+        "job" : "Latin and Ancient Greek",
+        "dates" : "Studied",
+        "roles" : [ "Dead languages" ]
+    }
+]

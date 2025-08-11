@@ -3,6 +3,12 @@ import { useContext } from "react"
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
+// Text
+import theatre from "../../texts/theatre.json"
+
+// Components
+import Informations from "../usefull/Informations"
+
 export default function Theatre()
 {
     // Get Context
@@ -20,7 +26,7 @@ export default function Theatre()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
-                    Theatre
+                    <Informations data={ theatre } mobile={ app.mobile } />
                 </div>
             </section>
 }

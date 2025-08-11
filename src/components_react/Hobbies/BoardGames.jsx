@@ -3,6 +3,12 @@ import { useContext } from "react"
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
+// Text
+import games from "../../texts/board-games.json"
+
+// Components
+import Informations from "../usefull/Informations"
+
 export default function BoardGames()
 {
     // Get Context
@@ -20,7 +26,7 @@ export default function BoardGames()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
-                    Board Games
+                    <Informations data={ games } mobile={ app.mobile } />
                 </div>
             </section>
 }

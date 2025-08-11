@@ -1,0 +1,17 @@
+[
+    {
+        "job" : "Climbing",
+        "dates" : "Beginner",
+        "roles" : [ "Block", "Lane" ]
+    },
+    {
+        "job" : "Combat",
+        "dates" : "Medium",
+        "roles" : [ "MMA", "Boxe", "Muaythai" ]
+    },
+    {
+        "job" : "Parkour",
+        "dates" : "Beginner",
+        "roles" : [ "Free run", "Occasionally" ]
+    }
+]
