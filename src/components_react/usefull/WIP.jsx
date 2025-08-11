@@ -1,9 +1,6 @@
 import { useEffect, useRef } from "react"
 import { gsap, Sine } from "gsap"
 
-// DEBUG !!!!
-// WIP
-// DEBUG !!!!
 export default function WIP()
 {
     // Ref
@@ -11,8 +8,8 @@ export default function WIP()
 
     useEffect(() => {
         gsap.to(wipRef.current, {
-            width: "40px",
-            height: "40px",
+            fontSize: "2.5rem",
+            letterSpacing: "15px",
             duration: 1.5,
             ease: "power1.in",
             repeat: -1,

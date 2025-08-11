@@ -173,6 +173,8 @@ html {
 
             .wip {
                 width: 100%;
+                height: 80%;
+                font-size: 1.5rem;
                 @include flex();
             }
             
