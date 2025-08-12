@@ -19,13 +19,19 @@ export default function Presentation()
     const chatRef = useRef()
     const max = data.length - 1
 
+    const [chat, setChat] = useState(false)
+
     const nextChat = (e) => {
         if (app.nextAction && (
             e.type === "keydown" && e.key === "Enter"
-            ||
-            e.type === "click" && e.target.className === "next"
         )) {
-            document.removeEventListener("keydown", nextChat, true)
+            setChat(true)
+        }
+    }
+
+    useEffect(() => {
+        if (app.presentation < max && chat) {
+            setChat(false)
             if (app.presentation !== 8) {
                 if (window.screen.width <= 450) {
                     setApp({...app, presentation: (app.presentation + 1), nextAction: false, mobile: true})
@@ -34,7 +40,7 @@ export default function Presentation()
                 }
             }
         }
-    }
+    }, [chat])
 
     useEffect(() => {
         if (app.presentation < max) {
@@ -45,18 +51,18 @@ export default function Presentation()
     }, [app.presentation])
 
     useEffect(() => {
-            document.addEventListener("keydown", nextChat, true)
+        if (app.presentation === 0) {
+            document.addEventListener("keydown", (e) => nextChat(e), true)
+        }
         if (!app.nextAction) {
-            document.removeEventListener("keydown", nextChat, true)
             setTimeout(() => {
-                setApp({...app, nextAction: true})
-                document.addEventListener("keydown", nextChat, true)
+                    setApp({...app, nextAction: true})
                 }, data[app.presentation].time * 1250)
         }
     }, [app.nextAction])
 
     return  <section id="presentation">
                 <div className="chat" ref={ chatRef }></div>
-                <div onClick={ nextChat } className="next">Press Enter</div>
+                <div onClick={ () => { app.presentation !== 8 ? setApp({...app, presentation: app.presentation + 1, nextAction: false}) : null } } className="next">Press Enter</div>
             </section>
 }

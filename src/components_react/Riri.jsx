@@ -61,34 +61,16 @@ export default function Riri()
             }).progress(0.5)
     }, [])
 
-    const nextChat = (e) => {
-        document.removeEventListener("click", nextChat, true)
-        if (app.nextAction && (
-            e.type === "click"
-            &&
-            e.target.id === "riri"
-        )) {
-            if (app.presentation === 8) {
-                setApp({...app, presentation: (app.presentation + 1), nextAction: false})
-                setCanMove(true)
-            }
-        }
-    }
-    
-    useEffect(() => {
-        if (app.nextAction) {
-            document.addEventListener("click", nextChat, true)
-        } else {
-            document.removeEventListener("click", nextChat, true)
-        }
-    }, [app.nextAction])
-
     useEffect(() => {
 
         document.addEventListener("mousemove", moveFollower)
         document.addEventListener("touchmove", moveFollower)
     }, [canMove])
 
-    return  <div id="riri" ref={ followerRef } onClick={ nextChat }>
+    return  <div id="riri" ref={ followerRef } onClick={ () => {    if (app.presentation === 8) {
+                                                                        setApp({...app, presentation: app.presentation + 1, nextAction: false})
+                                                                        setCanMove(true)
+                                                                    }
+                                                                } }>
             </div>
 }
