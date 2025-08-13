@@ -19,30 +19,37 @@ export default function Presentation()
     const chatRef = useRef()
     const max = data.length - 1
 
-    const [chat, setChat] = useState(false)
+    const [chat, setChat] = useState(0)
+    const [next, setNext] = useState(true)
 
     const nextChat = (e) => {
-        if (app.nextAction && (
+        if (next && (
             e.type === "keydown" && e.key === "Enter"
         )) {
-            setChat(true)
+            setChat(chat + 1)
         }
     }
 
     useEffect(() => {
-        if (app.presentation < max && chat) {
-            setChat(false)
+        document.addEventListener("keydown", nextChat, true)
+    }, [])
+
+    useEffect(() => {
+        document.removeEventListener("keydown", nextChat, true)
+        if (chat !== app.presentation && app.presentation < max && app.nextAction) {
             if (app.presentation !== 8) {
                 if (window.screen.width <= 450) {
-                    setApp({...app, presentation: (app.presentation + 1), nextAction: false, mobile: true})
+                    setApp({...app, presentation: app.presentation + 1, nextAction: false, mobile: true})
                 } else {
-                    setApp({...app, presentation: (app.presentation + 1), nextAction: false, mobile: false})
+                    setApp({...app, presentation: app.presentation + 1, nextAction: false, mobile: false})
                 }
             }
         }
+        document.addEventListener("keydown", nextChat, true)
     }, [chat])
 
     useEffect(() => {
+        setChat(app.presentation)
         if (app.presentation < max) {
             speaking(chatRef.current, data[app.presentation].time, data[app.presentation].text)
         } else {
@@ -51,9 +58,7 @@ export default function Presentation()
     }, [app.presentation])
 
     useEffect(() => {
-        if (app.presentation === 0) {
-            document.addEventListener("keydown", (e) => nextChat(e), true)
-        }
+        setNext(app.nextAction)
         if (!app.nextAction) {
             setTimeout(() => {
                     setApp({...app, nextAction: true})
@@ -63,6 +68,10 @@ export default function Presentation()
 
     return  <section id="presentation">
                 <div className="chat" ref={ chatRef }></div>
-                <div onClick={ () => { app.presentation !== 8 ? setApp({...app, presentation: app.presentation + 1, nextAction: false}) : null } } className="next">Press Enter</div>
+                <div onClick={ () => { 
+                                        if (app.presentation !== 8 && app.presentation < max && app.nextAction) {
+                                            setApp({...app, presentation: app.presentation + 1, nextAction: false})
+                                        }
+                                    } } className="next">Press Enter</div>
             </section>
 }

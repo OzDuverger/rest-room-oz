@@ -3,24 +3,24 @@
         "id" : 0,
         "title" : "Capture nugget",
         "description" : "Summer camp game : Kids must capture a sheep plush",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/capture-nugget.jpg"
     },
     {
         "id" : 1,
         "title" : "Insider like a larp",
         "description" : "Summer camp game : A mix between Insider game and cold warm",
-        "img" : "/img/pancktail.jpg"
+        "img" : "/img/insider-as-a-larp.png"
     },
     {
         "id" : 2,
         "title" : "Piou Piou Coin Coin Chaton",
         "description" : "A duck and dice game",
-        "img" : "/img/default-cocktail.jpg"
+        "img" : "/img/piou-piou-coin-coin-chaton.jpg"
     },
     {
         "id" : 3,
         "title" : "Hissez-Haut !",
         "description" : "A resource management game created in cooperation with a friend",
-        "img" : "/img/pancktail.jpg"
+        "img" : "/img/hissez-haut.webp"
     }
 ]

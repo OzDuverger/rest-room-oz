@@ -67,7 +67,7 @@ export default function Riri()
         document.addEventListener("touchmove", moveFollower)
     }, [canMove])
 
-    return  <div id="riri" ref={ followerRef } onClick={ () => {    if (app.presentation === 8) {
+    return  <div id="riri" ref={ followerRef } onClick={ () => {    if (app.presentation === 8 && app.nextAction) {
                                                                         setApp({...app, presentation: app.presentation + 1, nextAction: false})
                                                                         setCanMove(true)
                                                                     }
