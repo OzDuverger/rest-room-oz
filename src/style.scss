@@ -101,6 +101,45 @@ html {
                 background-color: $black;
             }
 
+            #asking-audio {
+                width: 100%;
+                height: 100%;
+                background-color: $black;
+                @include flex();
+
+                .audio {
+                    width: 100%;
+                    height: 30vh;
+                    border-radius: 20px;
+                    padding: 20px 40px;
+                    background-color: rgba(black, 0.5);
+                    border: 5px solid rgba($orange, 0.75);
+                    border-style: solid double;
+                    @include flex($direction: column, $justify: space-around);
+                
+                    .text {
+                        width: 100%;
+                        font-size: 1.5rem;
+                        text-align: center;
+                    }
+
+                    .buttons {
+                        width: 100%;
+                        @include flex($justify: space-around);
+
+                        .button {
+                            width: 40px;
+                            padding: 5px;
+                            border-radius: 5px;
+
+                            &:hover, &:active {
+                                background-color: rgba($orange, 0.25);
+                            }
+                        }
+                    }
+                }
+            }
+
             #riri {
                 position: absolute;
                 top: 50vh;
@@ -169,6 +208,15 @@ html {
                 z-index: 42;
                 top: 2vh;
                 left: 4vw;
+            }
+            
+            .sound-button {
+                width: 40px;
+                position: fixed;
+                z-index: 42;
+                top: 2vh;
+                right: 4vw;
+                z-index: 666;
             }
 
             .wip {

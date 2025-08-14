@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useContext } from "react"
 import { gsap, Sine } from "gsap"
 
 // Context
-import { AppContext, AppSetterContext } from "../context/AppContext"
+import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 export default function Riri()
 {

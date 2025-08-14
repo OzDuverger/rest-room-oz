@@ -1,7 +1,7 @@
 import { gsap } from "gsap"
 import { TextPlugin } from "gsap/TextPlugin"
 
-export function speaking(ref, timeChat, chat)
+export function speaking(ref, timeChat, chat, audioPlay)
 {
     gsap.registerPlugin(TextPlugin)
     
@@ -21,7 +21,9 @@ export function speaking(ref, timeChat, chat)
     }
     SpeakSound.volume = 0.5
     
-    SpeakSound.play()
+    if (audioPlay) {
+        SpeakSound.play()
+    }
 
     const tl = gsap.timeline()
 

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef, useState } from "react"
 
 // Context
-import { AppContext } from "../context/AppContext"
+import { AppContext } from "../../context/AppContext"
 
 // Usefull
-import { speaking } from "../usefull/Speaking"
+import { speaking } from "../../usefull/Speaking"
 
 export default function Chat()
 {
@@ -24,7 +24,7 @@ export default function Chat()
     useEffect(() => {
         if (chat !== null) {
             setNextAction(false)
-            speaking(chatRef.current, app.hoverTime, chat)
+            speaking(chatRef.current, app.hoverTime, chat, app.audioPlay)
             setTimeout(() => { setNextAction(true) }, app.hoverTime * 1500)
         }
     }, [chat])

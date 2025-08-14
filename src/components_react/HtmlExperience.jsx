@@ -4,10 +4,11 @@ import { useState, useEffect, useContext } from "react"
 import { AppContext, AppSetterContext } from "../context/AppContext"
 
 // React Components
-import EscapeButton from "./EscapeButton"
-import Riri from "./Riri"
-import Chat from "./Chat"
-import Presentation from "./Presentation"
+import AskingAudio from "./presentation/AskingAudio"
+import EscapeButton from "./buttons/EscapeButton"
+import Riri from "./presentation/Riri"
+import Chat from "./presentation/Chat"
+import Presentation from "./presentation/Presentation"
 import BarExperiences from "./Bartender/Experiences"
 import Receipes from "./Bartender/Receipes"
 import BarContact from "./Bartender/Contact"
@@ -23,16 +24,13 @@ import GameMasterContact from "./GameMaster/Contact"
 import KnitAndHook from "./Craft/KnitAndHook"
 import Furniture from "./Craft/Furniture"
 import Clothes from "./Craft/Clothes"
+import SoundButton from "./buttons/SoundButton"
 
 export default function HtmlExperience()
 {
     // Ambient Sound part
-    const AmbientAudio = new Audio("./sounds/chill-lofi-ambient.mp3")
+    const [ambientAudio, setAmbientAudio] = useState(new Audio("./sounds/chill-lofi-ambient.mp3"))
     useEffect(() => {
-        AmbientAudio.loop = true
-        AmbientAudio.volume = 0.25
-        AmbientAudio.play()
-
         if (window.screen.width <= 450) {
             setApp({...app, mobile: true})
             // DEBUG !!!
@@ -48,8 +46,20 @@ export default function HtmlExperience()
     const setApp = useContext(AppSetterContext)
     const app = useContext(AppContext)
 
+    // Sound
+    useEffect(() => {
+        if(app.audioPlay) {
+            ambientAudio.loop = true
+            ambientAudio.volume = 0.25
+            ambientAudio.play()
+        } else {
+            ambientAudio.pause()
+        }
+    }, [app.audioPlay])
+
     // Loading
     const [loading, setLoading] = useState(true)
+    const [askingAudio, setAskingAudio] = useState(true)
 
     // Informations
     const [information, setInformation] = useState(null)
@@ -61,12 +71,18 @@ export default function HtmlExperience()
     useEffect(() => {
         setLoading(app.loading)
     }, [app.loading])
+    
+    useEffect(() => {
+        setAskingAudio(app.askingAudio)
+    }, [app.askingAudio])
 
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <EscapeButton />
-                    <Riri />
-                    { loading ? (<Presentation />) : null }
+                    { !loading ? (<SoundButton />) : null }
+                    { askingAudio ? (<AskingAudio />) : null }
+                    { !askingAudio ? (<Riri />) : null }
+                    { loading && !askingAudio ? (<Presentation />) : null }
                     {/* Bar */}
                     { information === "bartender-experiences" ? <BarExperiences /> : null }
                     { information === "bartender-receipes" ? <Receipes /> : null }

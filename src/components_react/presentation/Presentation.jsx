@@ -1,13 +1,13 @@
 import { useEffect, useRef, useContext, useState } from "react"
 
 // Context
-import { AppContext, AppSetterContext } from "../context/AppContext"
+import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import data from "../texts/presentation.json"
+import data from "../../texts/presentation.json"
 
 // Usefull
-import { speaking } from "../usefull/Speaking"
+import { speaking } from "../../usefull/Speaking"
 
 export default function Presentation()
 {
@@ -51,7 +51,7 @@ export default function Presentation()
     useEffect(() => {
         setChat(app.presentation)
         if (app.presentation < max) {
-            speaking(chatRef.current, data[app.presentation].time, data[app.presentation].text)
+            speaking(chatRef.current, data[app.presentation].time, data[app.presentation].text, app.audioPlay)
         } else {
             setApp({...app, loading: false})
         }

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 
 // Context
-import { AppContext, AppSetterContext } from "../context/AppContext"
+import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 export default function EscapeButton()
 {
