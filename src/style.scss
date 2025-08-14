@@ -117,6 +117,10 @@ html {
                     border-style: solid double;
                     @include flex($direction: column, $justify: space-around);
                 
+                    @media screen and (max-width: 1100px) {
+                        height: 50vh;
+                    }
+
                     .text {
                         width: 100%;
                         font-size: 1.5rem;
@@ -463,6 +467,11 @@ html {
                     right: 0;
                     font-size: 0.75rem;
                     padding: 4vh 2vw;
+
+                    @media screen and (max-width: 1100px) {
+                        font-size: 1.25rem;
+                        padding: 3vh 4vw;
+                    }
                 }
             }
 

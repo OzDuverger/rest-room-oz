@@ -79,7 +79,7 @@ export default function HtmlExperience()
     return  <>
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <EscapeButton />
-                    { !loading ? (<SoundButton />) : null }
+                    { !loading && information === null ? (<SoundButton />) : null }
                     { askingAudio ? (<AskingAudio />) : null }
                     { !askingAudio ? (<Riri />) : null }
                     { loading && !askingAudio ? (<Presentation />) : null }
