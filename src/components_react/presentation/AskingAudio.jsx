@@ -20,8 +20,8 @@ export default function AskingAudio()
     return  <section id="asking-audio">
                 <div className="container audio">
                     <div className="text">
-                        This experience has been thinking for Desktop but still available on mobile, nevertheless it's less comfortable.
-                        This experience has also been thinking with some audio, nevertheless the choice is yours.
+                        This experience has been thought for Desktop but still available on mobile, nevertheless it's less comfortable.
+                        This experience has also been thought with some audio, nevertheless the choice is yours.
                     </div>
                     <div className="buttons">
                         <img onClick={ soundOn } className="button" src="/svg/speaker-on.svg" alt="speaker on" />
