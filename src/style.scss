@@ -31,7 +31,7 @@ html {
     }
 
     body {
-        min-height: 100vh;
+        min-height: 100dvh;
         overflow-x: hidden;
         margin: 0;
         @include flex(space-between, unset, column);
@@ -41,6 +41,7 @@ html {
             max-width: 1100px;
             width: 100%;
         }
+        
         button {
             font-family: inherit;
             background: unset;
