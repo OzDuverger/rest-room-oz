@@ -1,5 +1,6 @@
 import "./style.scss"
 import ReactDOM from "react-dom/client"
+import { Suspense } from "react"
 
 // Context
 import { AppProvider } from "./context/AppContext"
@@ -9,6 +10,7 @@ import Container from "./components_r3f/Container"
 
 // React Component
 import HtmlExperience from "./components_react/HtmlExperience"
+import Loader from "./components_react/usefull/Loader"
 
 function setRealHeight() {
     // calcul : 1vh in real pixel
@@ -26,8 +28,10 @@ window.addEventListener("orientationchange", setRealHeight);
 const root = ReactDOM.createRoot(document.querySelector("#root"))
 
 root.render(
-    <AppProvider>
-        <Container />
-        <HtmlExperience />
-    </AppProvider>
+    <Suspense fallback={<Loader />} >
+        <AppProvider>
+            <Container />
+            <HtmlExperience />
+        </AppProvider>
+    </Suspense>
 )
