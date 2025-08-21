@@ -7,54 +7,24 @@
     },
     {
         "id" : 1,
-        "title" : "Apneist",
-        "description" : "red berries / leetchi / pineapple",
-        "img" : "/img/default-cocktail.jpg"
-    },
-    {
-        "id" : 2,
         "title" : "Cloaking spell",
         "description" : "vodka / cranberry / apple / lime / cassis / glitters",
         "img" : "/img/cloaking-spell.jpg"
     },
     {
-        "id" : 3,
-        "title" : "Life potion",
-        "description" : "grape / apple / cranberry / sparkling water",
-        "img" : "/img/default-cocktail.jpg"
-    },
-    {
-        "id" : 4,
+        "id" : 2,
         "title" : "Barbie",
         "description" : "red berries / leetchi / cranberry / lime / sparkling water / glitters",
         "img" : "/img/barbie-cocktail.jpg"
     },
     {
-        "id" : 5,
-        "title" : "Barbie at night",
-        "description" : "gin / red berries / leetchi / cranberry / lime / sparkling water / glitters",
-        "img" : "/img/default-cocktail.jpg"
-    },
-    {
-        "id" : 6,
-        "title" : "Geraldine",
-        "description" : "mimosa / sparkling water / lime",
-        "img" : "/img/default-cocktail.jpg"
-    },
-    {
-        "id" : 7,
-        "title" : "Gigi's Madness",
-        "description" : "gin / mimosa / sparkling water / lime",
-        "img" : "/img/default-cocktail.jpg"
-    },
-    {
-        "id" : 8,
+        "id" : 3,
         "title" : "Poison lama",
         "description" : "vodka / cassis / water / lime / glitters",
         "img" : "/img/lama-poison.jpg"
     },
     {
-        "id" : 9,
+        "id" : 4,
         "title" : "Pancktail",
         "description" : "vodka or gin / apricot / raspberry / curacao / glitters",
         "img" : "/img/pancktail.jpg"

@@ -26,7 +26,7 @@ export default function Furniture()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
-                    <WIP />
+                    <WIP mobile={ app.mobile }/>
                 </div>
             </section>
 }
