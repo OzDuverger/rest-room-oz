@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect, useState } from "react"
+import { useContext, useRef, useEffect, useState, useMemo } from "react"
 import { Html, useTexture, useGLTF } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
@@ -46,19 +46,21 @@ export default function Table()
     const tableBakedTexture = useTexture("./textures/table-baked.jpg")
     tableBakedTexture.flipY = false
 
-    // Smoke Material
-    const smokeMaterial = useRef()
-    useFrame((state, delta) => {
-        // DEBUG !!!
-        // console.log("coucou : " + smokeMaterial.current.uniforms.uTime.value)
-        // DEBUG !!!
-        smokeMaterial.current.uniforms.uTime.value += delta
-    })
-
     // Perlin noise
     const perlinTexture = useTexture("./perlin.png")
     perlinTexture.wrapS = THREE.RepeatWrapping
     perlinTexture.wrapT = THREE.RepeatWrapping
+
+    // Smoke Material
+    const uniforms = useMemo(() => ({
+        uTime: { value: 0 },
+        uPerlinTexture: new THREE.Uniform(perlinTexture)
+    }), [perlinTexture])
+
+    const smokeMaterial = useRef()
+    useFrame((state, delta) => {
+        smokeMaterial.current.uniforms.uTime.value += delta
+    })
 
     // Mouse events handlers
     const groupPointerEnter = (event) => {
@@ -117,10 +119,7 @@ export default function Table()
                     <shaderMaterial ref={ smokeMaterial }
                                     vertexShader={ coffeeSmokeVertexShader }
                                     fragmentShader={ coffeeSmokeFragmentShader }
-                                    uniforms={{
-                                        uTime: { value: 0 },
-                                        uPerlinTexture: new THREE.Uniform(perlinTexture)
-                                    }}
+                                    uniforms={ uniforms }
                                     transparent
                                     side={ THREE.DoubleSide }
                                     depthWrite={ false }
