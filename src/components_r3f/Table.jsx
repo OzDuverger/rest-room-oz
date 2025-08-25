@@ -27,10 +27,6 @@ export default function Table()
 
     useEffect(() => {
         setLoading(app.loading)
-        // DEBUG !!!
-        // console.log(coffeeSmokeVertexShader)
-        // console.log(coffeeSmokeFragmentShader)
-        // DEBUG !!!
     }, [app.loading])
 
     // Get app context setter
