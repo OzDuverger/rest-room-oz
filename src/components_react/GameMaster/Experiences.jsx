@@ -26,6 +26,7 @@ export default function GameMasterExperiences()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
+                    <a class="link" href="/cv/cv_oz_duverger-animateur-Game-Master.pdf" download="cv_oz_duverger-animateur-Game-Master.pdf">Download my CV !</a>
                     <Informations data={ experiences } mobile={ app.mobile } />
                 </div>
             </section>

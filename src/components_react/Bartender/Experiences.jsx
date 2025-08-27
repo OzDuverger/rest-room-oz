@@ -26,6 +26,7 @@ export default function BarExperiences()
                     <div className="close">
                         <img src="/svg/cross-circle.svg" alt="cross" onClick={ close }/>
                     </div>
+                    <a class="link" href="/cv/cv_oz_duverger-bartender.pdf" download="cv_oz_duverger-bartender.pdf">Download my CV !</a>
                     <Informations data={ experiences } mobile={ app.mobile } />
                 </div>
             </section>
