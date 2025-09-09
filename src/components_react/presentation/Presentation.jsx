@@ -22,20 +22,7 @@ export default function Presentation()
     const [chat, setChat] = useState(0)
     const [next, setNext] = useState(true)
 
-    const nextChat = (e) => {
-        if (next && (
-            e.type === "keydown" && e.key === "Enter"
-        )) {
-            setChat(chat + 1)
-        }
-    }
-
     useEffect(() => {
-        document.addEventListener("keydown", nextChat, true)
-    }, [])
-
-    useEffect(() => {
-        document.removeEventListener("keydown", nextChat, true)
         if (chat !== app.presentation && app.presentation < max && app.nextAction) {
             if (app.presentation !== 8) {
                 if (window.screen.width <= 450) {
@@ -45,7 +32,6 @@ export default function Presentation()
                 }
             }
         }
-        document.addEventListener("keydown", nextChat, true)
     }, [chat])
 
     useEffect(() => {
@@ -72,6 +58,6 @@ export default function Presentation()
                                         if (app.presentation !== 8 && app.presentation < max && app.nextAction) {
                                             setApp({...app, presentation: app.presentation + 1, nextAction: false})
                                         }
-                                    } } className="next">Press Enter</div>
+                                    } } className="next">Click Here</div>
             </section>
 }

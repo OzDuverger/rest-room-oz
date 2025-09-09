@@ -15,6 +15,7 @@ export function AppProvider({ children })
         camMoves: false,
         audioPlay: false,
         askingAudio: true,
+        french: false,
         presentation: 0,
         // Mobile == screen < 450px
         mobile: false
