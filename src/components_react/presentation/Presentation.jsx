@@ -4,7 +4,8 @@ import { useEffect, useRef, useContext, useState } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import data from "../../texts/presentation.json"
+import english from "../../texts/en/presentation.json"
+import french from "../../texts/fr/presentation.json"
 
 // Usefull
 import { speaking } from "../../usefull/Speaking"
@@ -14,6 +15,16 @@ export default function Presentation()
     // Get app context
     const setApp = useContext(AppSetterContext)
     const app = useContext(AppContext)
+
+    // Data var
+    const [data, setData] = useState(english)
+    useEffect(() => {
+        if (app.french) {
+            setData(french)
+        } else {
+            setData(english)
+        }
+    }, [])
 
     // Chat var
     const chatRef = useRef()
@@ -58,6 +69,6 @@ export default function Presentation()
                                         if (app.presentation !== 8 && app.presentation < max && app.nextAction) {
                                             setApp({...app, presentation: app.presentation + 1, nextAction: false})
                                         }
-                                    } } className="next">Click Here</div>
+                                    } } className="next">{ app.french ? "Clique ici" : "Click Here" }</div>
             </section>
 }

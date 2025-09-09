@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import juggling from "../../texts/juggling.json"
+import juggling from "../../texts/en/juggling.json"
 
 // Components
 import Informations from "../usefull/Informations"

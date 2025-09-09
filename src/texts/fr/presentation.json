@@ -1,0 +1,50 @@
+[
+    {
+        "text" : "Hey !",
+        "time" : 1
+    },
+    {
+        "text" : "Hey ! Toi !",
+        "time" : 1
+    },
+    {
+        "text" : "Hey ! Hey !",
+        "time" : 1
+    },
+    {
+        "text" : "Ecoute moi !",
+        "time" : 1
+    },
+    {
+        "text" : "Je suis Riri, un ami d'Oz et tu es sur le point d'entrer dans son havre de paix.",
+        "time" : 3
+    },
+    {
+        "text" : "Je sais; tu n'as pas l'habitude de parler à une fée mais gneh... c'est la vie !",
+        "time" : 3
+    },
+    {
+        "text" : "On ne va pas en faire tout un fromage !",
+        "time" : 2
+    },
+    {
+        "text" : "...",
+        "time" : 1
+    },
+    {
+        "text" : "Essaye de m'attraper !",
+        "time" : 2
+    },
+    {
+        "text" : "Vuiiiii ! Tu as réussi !",
+        "time" : 1
+    },
+    {
+        "text" : "Tu n'as qu'à me glisser sur les différents éléments de la pièce pour en apprendre plus !",
+        "time" : 3
+    },
+    {
+        "text" : "Entrons dans le havre de paix ! WOUHOU !",
+        "time" : 2
+    }
+]

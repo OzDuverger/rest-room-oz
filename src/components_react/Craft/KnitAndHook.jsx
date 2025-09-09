@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import knit from "../../texts/knit-and-hook.json"
+import knit from "../../texts/en/knit-and-hook.json"
 
 // Components
 import Illustrated from "../usefull/Illustrated"

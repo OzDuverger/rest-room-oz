@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import sports from "../../texts/sports.json"
+import sports from "../../texts/en/sports.json"
 
 // Components
 import Informations from "../usefull/Informations"

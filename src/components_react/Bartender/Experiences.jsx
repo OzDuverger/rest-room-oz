@@ -1,10 +1,11 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Texts
-import experiences from "../../texts/bar-experiences.json"
+import english from "../../texts/en/bar-experiences.json"
+import french from "../../texts/fr/bar-experiences.json"
 
 // Components
 import Informations from "../usefull/Informations"
@@ -14,6 +15,16 @@ export default function BarExperiences()
     // Get Context
     const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
+
+    // Experiences var
+    const [experiences, setExperiences] = useState(english)
+    useEffect(() => {
+        if (app.french) {
+            setExperiences(french)
+        } else {
+            setExperiences(english)
+        }
+    }, [])
 
     const close = (event) => {
         if (app.focus === "Barrel") {

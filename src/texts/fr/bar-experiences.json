@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 0,
+        "job" : "Player One",
+        "dates" : "Août 2021 - Avril 2022",
+        "roles" : [ "Bartender", "Serveur" ]
+    },
+    {
+        "id" : 1,
+        "job" : "Block'Out Saint Ouen",
+        "dates" : "Janvier 2020 - Octobre 2020",
+        "roles" : [ "Bartender", "Serveur", "Manager" ]
+    },
+    {
+        "id" : 2,
+        "job" : "Le Mont Vallon",
+        "dates" : "Eté de 2012 à 2016",
+        "roles" : [ "Runner" ]
+    }
+]

@@ -1,10 +1,11 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
 // Context
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import receipes from "../../texts/receipes.json"
+import english from "../../texts/en/receipes.json"
+import french from "../../texts/fr/receipes.json"
 
 // Components
 import Illustrated from "../usefull/Illustrated"
@@ -14,6 +15,16 @@ export default function Receipes()
     // Get Context
     const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
+
+    // Receipes var
+    const [receipes, setReceipes] = useState(english)
+    useEffect(() => {
+        if (app.french) {
+            setReceipes(french)
+        } else {
+            setReceipes(english)
+        }
+    }, [])
 
     const close = (event) => {
         if (app.focus === "Barrel") {

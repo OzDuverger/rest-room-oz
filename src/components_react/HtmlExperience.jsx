@@ -25,6 +25,7 @@ import KnitAndHook from "./Craft/KnitAndHook"
 import Furniture from "./Craft/Furniture"
 import Clothes from "./Craft/Clothes"
 import SoundButton from "./buttons/SoundButton"
+import LanguagesButton from "./buttons/LanguagesButton"
 
 export default function HtmlExperience()
 {
@@ -80,6 +81,7 @@ export default function HtmlExperience()
                 <div id="html-presentation" className={ loading ? "black-screen" : null } >
                     <EscapeButton />
                     { !loading && information === null ? (<SoundButton />) : null }
+                    { !loading && information === null ? (<LanguagesButton />) : null }
                     { askingAudio ? (<AskingAudio />) : null }
                     { !askingAudio ? (<Riri />) : null }
                     { loading && !askingAudio ? (<Presentation />) : null }

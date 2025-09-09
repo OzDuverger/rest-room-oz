@@ -1,0 +1,32 @@
+[
+    {
+        "id" : 0,
+        "title" : "Elixir de patience",
+        "description" : "rhum blanc / rhum brun / pomme / vanille",
+        "img" : "/img/default-cocktail.jpg"
+    },
+    {
+        "id" : 1,
+        "title" : "Cloaking spell",
+        "description" : "vodka / cranberry / pomme / citron / cassis / paillettes",
+        "img" : "/img/cloaking-spell.jpg"
+    },
+    {
+        "id" : 2,
+        "title" : "Barbie",
+        "description" : "fruits rouges / leetchi / cranberry / citron / eau gazeuse / paillettes",
+        "img" : "/img/barbie-cocktail.jpg"
+    },
+    {
+        "id" : 3,
+        "title" : "Poison lama",
+        "description" : "vodka / cassis / eau / citron / paillettes",
+        "img" : "/img/lama-poison.jpg"
+    },
+    {
+        "id" : 4,
+        "title" : "Pancktail",
+        "description" : "vodka ou gin / apricot / raspberry / curaçao / paillettes",
+        "img" : "/img/pancktail.jpg"
+    }
+]

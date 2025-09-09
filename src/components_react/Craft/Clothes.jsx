@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import clothes from "../../texts/clothes.json"
+import clothes from "../../texts/en/clothes.json"
 
 // Components
 import Illustrated from "../usefull/Illustrated"

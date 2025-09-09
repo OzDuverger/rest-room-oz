@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Texts
-import experiences from "../../texts/animator-experiences.json"
+import experiences from "../../texts/en/animator-experiences.json"
 
 // Components
 import Informations from "../usefull/Informations"

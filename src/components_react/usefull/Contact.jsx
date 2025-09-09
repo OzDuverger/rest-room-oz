@@ -31,7 +31,7 @@ export default function Contact({ template })
 
     return  <form className="contact-form" ref={ formRef } onSubmit={ contact }>
                 <div className="datum">
-                    <label>Name</label>
+                    <label>{ append.french ? "Nom" : "Name" }</label>
                     <input type="text" name="user_name" />
                 </div>
                 <div className="datum">

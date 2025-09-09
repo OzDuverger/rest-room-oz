@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import games from "../../texts/board-games.json"
+import games from "../../texts/en/board-games.json"
 
 // Components
 import Informations from "../usefull/Informations"

@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-// import receipes from "../../texts/receipes.json"
+// import receipes from "../../texts/en/receipes.json"
 
 // Components
 import WIP from "../usefull/WIP"
