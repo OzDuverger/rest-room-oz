@@ -1,0 +1,17 @@
+[
+    {
+        "job" : "Escalade",
+        "dates" : "Débutant",
+        "roles" : [ "Block", "Voie" ]
+    },
+    {
+        "job" : "Combat",
+        "dates" : "Confirmé",
+        "roles" : [ "MMA", "Boxe", "Muaythai" ]
+    },
+    {
+        "job" : "Parkour",
+        "dates" : "Débutant",
+        "roles" : [ "Free run", "Occasionellement" ]
+    }
+]

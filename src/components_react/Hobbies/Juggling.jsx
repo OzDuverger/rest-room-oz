@@ -4,7 +4,8 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import juggling from "../../texts/en/juggling.json"
+import english from "../../texts/en/juggling.json"
+import french from "../../texts/fr/juggling.json"
 
 // Components
 import Informations from "../usefull/Informations"
@@ -14,6 +15,16 @@ export default function Juggling()
     // Get Context
     const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
+
+    // Juggling var
+    const [juggling, setJuggling] = useState(english)
+    useEffect(() => {
+        if (app.french) {
+            setJuggling(french)
+        } else {
+            setJuggling(english)
+        }
+    }, [])
 
     const close = (event) => {
         if (app.focus === "Shelf") {

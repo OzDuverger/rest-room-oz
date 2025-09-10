@@ -1,0 +1,22 @@
+[
+    {
+        "job" : "Gamer",
+        "dates" : "jeux préférés",
+        "roles" : [ "Codex Naturalis", "Hero Realms", "Skull", "Res Arcana", "..." ]
+    },
+    {
+        "job" : "Game Creator",
+        "dates" : "En cours de process",
+        "roles" : [ "Hissez-haut", "Pioupiou coincoin chaton" ]
+    },
+    {
+        "job" : "Roleplayer",
+        "dates" : "Style de Dnd",
+        "roles" : [ "Gamer", "Game Master", "One-shot writter" ]
+    },
+    {
+        "job" : "Videogame Player",
+        "dates" : "jeux préférés",
+        "roles" : [ "Zelda license", "Donkey kong license", "Sea of Thieves", "Platformers" ]
+    }
+]

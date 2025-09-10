@@ -1,0 +1,26 @@
+[
+    {
+        "id" : 0,
+        "title" : "Capture nugget",
+        "description" : "Jeu de colonie de vacances : les enfants doivent capturer une peluche mouton",
+        "img" : "/img/capture-nugget.jpg"
+    },
+    {
+        "id" : 1,
+        "title" : "Insider en GN",
+        "description" : "Jeu de colonie de vacances : un mélange entre Insider et un jeu de chaud-froid",
+        "img" : "/img/insider-as-a-larp.png"
+    },
+    {
+        "id" : 2,
+        "title" : "Piou Piou Coin Coin Chaton",
+        "description" : "Un jeu de canards et de dés",
+        "img" : "/img/piou-piou-coin-coin-chaton.jpg"
+    },
+    {
+        "id" : 3,
+        "title" : "Hissez-Haut !",
+        "description" : "Jeu de gestion de ressources créé avec un ami",
+        "img" : "/img/hissez-haut.webp"
+    }
+]

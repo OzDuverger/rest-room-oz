@@ -1,0 +1,17 @@
+[
+    {
+        "job" : "Piano",
+        "dates" : "Depuis l'enfance",
+        "roles" : [ "Classique", "Jazz", "Variété" ]
+    },
+    {
+        "job" : "Flûte à bec",
+        "dates" : "Depuis l'enfance",
+        "roles" : [ "De la Sopranino à la Basse", "Baroque", "Celtic", "Improvisation" ]
+    },
+    {
+        "job" : "Guitar",
+        "dates" : "Débutant",
+        "roles" : [ "Accords basiques" ]
+    }
+]

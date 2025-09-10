@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
+import { append } from "three/tsl"
 
 export default function WIP({ mobile })
 {
@@ -29,6 +30,6 @@ export default function WIP({ mobile })
     }, [])
 
     return  <div ref={ wipRef } className="wip">
-                Work In Progress
+                { app.french ? "En cours" : "Work In Progress" }
             </div>
 }

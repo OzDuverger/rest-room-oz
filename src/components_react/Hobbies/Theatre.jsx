@@ -4,7 +4,8 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import theatre from "../../texts/en/theatre.json"
+import english from "../../texts/en/theatre.json"
+import french from "../../texts/fr/theatre.json"
 
 // Components
 import Informations from "../usefull/Informations"
@@ -14,6 +15,16 @@ export default function Theatre()
     // Get Context
     const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
+
+    // Theatre var
+    const [theatre, setTheatre] = useState(english)
+    useEffect(() => {
+        if (app.french) {
+            setTheatre(french)
+        } else {
+            setTheatre(english)
+        }
+    }, [])
 
     const close = (event) => {
         if (app.focus === "Shelf") {

@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 0,
+        "title" : "Torchman",
+        "description" : "Mascotte de Masterio",
+        "img" : "/img/torchman.webp"
+    },
+    {
+        "id" : 1,
+        "title" : "Pilon de poulet",
+        "description" : "Pilon de poulet aux couleurs du drapeau trans",
+        "img" : "/img/chicken-wing.webp"
+    },
+    {
+        "id" : 2,
+        "title" : "Serpent d'humeur",
+        "description" : "Serpent avec une couleur selon l'humeur par jour",
+        "img" : "/img/mood-snake.webp"
+    }
+]

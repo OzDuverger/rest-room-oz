@@ -4,7 +4,8 @@ import { useContext } from "react"
 import { AppContext, AppSetterContext } from "../../context/AppContext"
 
 // Text
-import clothes from "../../texts/en/clothes.json"
+import english from "../../texts/en/clothes.json"
+import french from "../../texts/fr/clothes.json"
 
 // Components
 import Illustrated from "../usefull/Illustrated"
@@ -14,6 +15,16 @@ export default function Clothes()
     // Get Context
     const app = useContext(AppContext)
     const setApp = useContext(AppSetterContext)
+
+    // Clothes var
+    const [clothes, setClothes] = useState(english)
+    useEffect(() => {
+        if (app.french) {
+            setClothes(french)
+        } else {
+            setClothes(english)
+        }
+    }, [])
 
     const close = (event) => {
         if (app.focus === "Bench") {
