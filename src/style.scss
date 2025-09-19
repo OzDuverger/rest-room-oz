@@ -5,6 +5,27 @@ $red: #E03616;
 $green: #45C4A2;
 $black: #030202;
 
+@font-face {
+    font-family: "Sigmar One";
+    src: url("/fonts/SigmarOne/SigmarOne-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Comic Relief";
+    src: url("/fonts/ComicRelief/ComicRelief-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Comic Relief";
+    src: url("/fonts/ComicRelief/ComicRelief-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
 // Mixins
 @mixin flex($justify: center, $align: center, $direction: row) {
     display: flex;
